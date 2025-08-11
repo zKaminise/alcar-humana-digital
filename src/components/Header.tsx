@@ -79,7 +79,9 @@ const Header = () => {
           <div className="flex-shrink-0">
             <Link 
               to="/"
-              className="text-2xl font-bold text-primary hover:text-primary-light transition-colors drop-shadow-lg"
+              className={`text-2xl font-bold transition-colors drop-shadow-lg ${
+                isScrolled ? 'text-primary hover:text-primary-light' : 'text-white hover:text-white/80'
+              }`}
             >
               Alçar Humà
             </Link>
@@ -89,8 +91,10 @@ const Header = () => {
           <nav className="hidden lg:flex items-center space-x-8">
             <Link
               to="/"
-              className={`text-foreground hover:text-primary transition-colors font-medium relative group drop-shadow-md ${
-                location.pathname === '/' ? 'text-primary' : ''
+              className={`transition-colors font-medium relative group drop-shadow-md ${
+                isScrolled 
+                  ? `text-foreground hover:text-primary ${location.pathname === '/' ? 'text-primary' : ''}`
+                  : `text-white hover:text-white/80 ${location.pathname === '/' ? 'text-white' : ''}`
               }`}
             >
               Início
@@ -104,8 +108,10 @@ const Header = () => {
               onMouseLeave={handleDropdownLeave}
             >
               <button
-                className={`flex items-center text-foreground hover:text-primary transition-colors font-medium relative group drop-shadow-md ${
-                  location.pathname === '/solucoes' ? 'text-primary' : ''
+                className={`flex items-center transition-colors font-medium relative group drop-shadow-md ${
+                  isScrolled 
+                    ? `text-foreground hover:text-primary ${location.pathname === '/solucoes' ? 'text-primary' : ''}`
+                    : `text-white hover:text-white/80 ${location.pathname === '/solucoes' ? 'text-white' : ''}`
                 }`}
               >
                 Soluções
@@ -143,7 +149,9 @@ const Header = () => {
               onMouseLeave={handleDropdownLeave}
             >
               <button
-                className="flex items-center text-foreground hover:text-primary transition-colors font-medium relative group drop-shadow-md"
+                className={`flex items-center transition-colors font-medium relative group drop-shadow-md ${
+                  isScrolled ? 'text-foreground hover:text-primary' : 'text-white hover:text-white/80'
+                }`}
               >
                 Segmentos
                 <ChevronDown className="w-4 h-4 ml-1" />
@@ -180,8 +188,10 @@ const Header = () => {
               onMouseLeave={handleDropdownLeave}
             >
               <button
-                className={`flex items-center text-foreground hover:text-primary transition-colors font-medium relative group drop-shadow-md ${
-                  ['/blog', '/cases', '/diferenciais'].includes(location.pathname) ? 'text-primary' : ''
+                className={`flex items-center transition-colors font-medium relative group drop-shadow-md ${
+                  isScrolled 
+                    ? `text-foreground hover:text-primary ${['/blog', '/cases', '/diferenciais'].includes(location.pathname) ? 'text-primary' : ''}`
+                    : `text-white hover:text-white/80 ${['/blog', '/cases', '/diferenciais'].includes(location.pathname) ? 'text-white' : ''}`
                 }`}
               >
                 Conteúdo
@@ -214,8 +224,10 @@ const Header = () => {
 
             <Link
               to="/sobre"
-              className={`text-foreground hover:text-primary transition-colors font-medium relative group drop-shadow-md ${
-                location.pathname === '/sobre' ? 'text-primary' : ''
+              className={`transition-colors font-medium relative group drop-shadow-md ${
+                isScrolled 
+                  ? `text-foreground hover:text-primary ${location.pathname === '/sobre' ? 'text-primary' : ''}`
+                  : `text-white hover:text-white/80 ${location.pathname === '/sobre' ? 'text-white' : ''}`
               }`}
             >
               Sobre
@@ -224,8 +236,10 @@ const Header = () => {
             
             <Link
               to="/contato"
-              className={`text-foreground hover:text-primary transition-colors font-medium relative group drop-shadow-md ${
-                location.pathname === '/contato' ? 'text-primary' : ''
+              className={`transition-colors font-medium relative group drop-shadow-md ${
+                isScrolled 
+                  ? `text-foreground hover:text-primary ${location.pathname === '/contato' ? 'text-primary' : ''}`
+                  : `text-white hover:text-white/80 ${location.pathname === '/contato' ? 'text-white' : ''}`
               }`}
             >
               Contato
