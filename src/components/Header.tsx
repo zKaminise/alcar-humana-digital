@@ -219,6 +219,16 @@ const Header = () => {
               Sobre
               <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
             </Link>
+            
+            <Link
+              to="/contato"
+              className={`text-foreground hover:text-primary transition-colors font-medium relative group ${
+                location.pathname === '/contato' ? 'text-primary' : ''
+              }`}
+            >
+              Contato
+              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+            </Link>
           </nav>
 
           {/* CTA Buttons - Desktop */}
