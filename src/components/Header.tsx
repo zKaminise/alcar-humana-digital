@@ -42,6 +42,13 @@ const Header = () => {
     { label: 'Recursos', href: '/blog', description: 'Materials e downloads' }
   ];
 
+  const sobreMenu = [
+    { label: 'Quem Somos', href: '/sobre/quem-somos', description: 'Nossa história e missão' },
+    { label: 'Nossa Expertise', href: '/sobre/nossa-expertise', description: 'Áreas de atuação e metodologia' },
+    { label: 'Trabalhe Conosco', href: '/sobre/trabalhe-conosco', description: 'Oportunidades de carreira' },
+    { label: 'Fale Conosco', href: '/sobre/fale-conosco', description: 'Entre em contato conosco' }
+  ];
+
   const handleDropdownEnter = (menu: string) => {
     if (dropdownTimeout) {
       clearTimeout(dropdownTimeout);
@@ -211,17 +218,46 @@ const Header = () => {
               )}
             </div>
 
-            <Link
-              to="/sobre"
-              className={`transition-colors font-medium relative group drop-shadow-md ${
-                isScrolled 
-                  ? `text-foreground hover:text-primary ${location.pathname === '/sobre' ? 'text-primary' : ''}`
-                  : `text-white hover:text-white/80 ${location.pathname === '/sobre' ? 'text-white' : ''}`
-              }`}
+            {/* Sobre Dropdown */}
+            <div 
+              className="relative"
+              onMouseEnter={() => handleDropdownEnter('sobre')}
+              onMouseLeave={handleDropdownLeave}
             >
-              Sobre
-              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-            </Link>
+              <button
+                className={`flex items-center transition-colors font-medium relative group drop-shadow-md ${
+                  isScrolled 
+                    ? `text-foreground hover:text-primary ${['/sobre', '/sobre/quem-somos', '/sobre/nossa-expertise', '/sobre/trabalhe-conosco', '/sobre/fale-conosco'].includes(location.pathname) ? 'text-primary' : ''}`
+                    : `text-white hover:text-white/80 ${['/sobre', '/sobre/quem-somos', '/sobre/nossa-expertise', '/sobre/trabalhe-conosco', '/sobre/fale-conosco'].includes(location.pathname) ? 'text-white' : ''}`
+                }`}
+              >
+                Sobre
+                <ChevronDown className="w-4 h-4 ml-1" />
+                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+              </button>
+              
+              {activeDropdown === 'sobre' && (
+                <div 
+                  className="absolute top-full left-0 mt-1 w-80 bg-card rounded-lg shadow-elegant border border-border p-6 animate-fade-in z-50"
+                  onMouseEnter={() => handleDropdownEnter('sobre')}
+                  onMouseLeave={handleDropdownLeave}
+                >
+                  <div className="space-y-3">
+                    {sobreMenu.map((item) => (
+                      <Link
+                        key={item.label}
+                        to={item.href}
+                        className="block p-3 rounded-lg hover:bg-muted transition-colors"
+                        onClick={closeDropdowns}
+                      >
+                        <div className="font-medium text-foreground">{item.label}</div>
+                        <div className="text-sm text-muted-foreground">{item.description}</div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
             
             <Link
               to="/contato"
@@ -321,14 +357,23 @@ const Header = () => {
                 </div>
               </div>
 
-              <Link
-                to="/sobre"
-                className="block w-full text-left px-4 py-3 text-foreground hover:text-primary hover:bg-muted transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Sobre
-              </Link>
-              
+              {/* Sobre - Mobile */}
+              <div className="px-4 py-2">
+                <div className="font-medium text-foreground mb-2">Sobre</div>
+                <div className="pl-4 space-y-1">
+                  {sobreMenu.map((item) => (
+                    <Link
+                      key={item.label}
+                      to={item.href}
+                      className="block py-2 text-sm text-muted-foreground hover:text-primary hover:bg-muted rounded px-2 transition-colors"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
               <Link
                 to="/contato"
                 className="block w-full text-left px-4 py-3 text-foreground hover:text-primary hover:bg-muted transition-colors"

@@ -28,6 +28,12 @@ import Financeiro from "./pages/segments/Financeiro";
 import VarejoFarma from "./pages/segments/VarejoFarma";
 import Educacao from "./pages/segments/Educacao";
 
+// About Pages
+import QuemSomos from "./pages/about/QuemSomos";
+import NossaExpertise from "./pages/about/NossaExpertise";
+import TrabalheConosco from "./pages/about/TrabalheConosco";
+import FaleConosco from "./pages/about/FaleConosco";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -60,6 +66,13 @@ const App = () => (
             <Route path="/segmentos/financeiro" element={<Financeiro />} />
             <Route path="/segmentos/varejo-farma" element={<VarejoFarma />} />
             <Route path="/segmentos/educacao" element={<Educacao />} />
+            
+            {/* About Routes */}
+            <Route path="/sobre/quem-somos" element={<QuemSomos />} />
+            <Route path="/sobre/nossa-expertise" element={<NossaExpertise />} />
+            <Route path="/sobre/trabalhe-conosco" element={<TrabalheConosco />} />
+            <Route path="/sobre/fale-conosco" element={<FaleConosco />} />
+            
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
