@@ -16,7 +16,7 @@ const TreinamentosCapacitacao = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50" />
         <div className="relative container mx-auto px-4 h-full flex items-center">
           <div className="text-white max-w-3xl">
-            <p className="text-lg font-medium mb-2 text-primary">Solução</p>
+            <p className="text-lg font-medium mb-2 text-white/80">Solução</p>
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
               TREINAMENTOS E CAPACITAÇÃO
             </h1>
