@@ -70,7 +70,7 @@ const Header = () => {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
           ? 'bg-background/95 backdrop-blur-lg shadow-card border-b border-border' 
-          : 'bg-transparent'
+          : 'bg-gradient-to-b from-black/70 via-black/50 to-transparent backdrop-blur-sm'
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6">
@@ -79,7 +79,7 @@ const Header = () => {
           <div className="flex-shrink-0">
             <Link 
               to="/"
-              className="text-2xl font-bold text-primary hover:text-primary-light transition-colors"
+              className="text-2xl font-bold text-primary hover:text-primary-light transition-colors drop-shadow-lg"
             >
               Alçar Humà
             </Link>
@@ -89,7 +89,7 @@ const Header = () => {
           <nav className="hidden lg:flex items-center space-x-8">
             <Link
               to="/"
-              className={`text-foreground hover:text-primary transition-colors font-medium relative group ${
+              className={`text-foreground hover:text-primary transition-colors font-medium relative group drop-shadow-md ${
                 location.pathname === '/' ? 'text-primary' : ''
               }`}
             >
@@ -104,7 +104,7 @@ const Header = () => {
               onMouseLeave={handleDropdownLeave}
             >
               <button
-                className={`flex items-center text-foreground hover:text-primary transition-colors font-medium relative group ${
+                className={`flex items-center text-foreground hover:text-primary transition-colors font-medium relative group drop-shadow-md ${
                   location.pathname === '/solucoes' ? 'text-primary' : ''
                 }`}
               >
@@ -143,7 +143,7 @@ const Header = () => {
               onMouseLeave={handleDropdownLeave}
             >
               <button
-                className="flex items-center text-foreground hover:text-primary transition-colors font-medium relative group"
+                className="flex items-center text-foreground hover:text-primary transition-colors font-medium relative group drop-shadow-md"
               >
                 Segmentos
                 <ChevronDown className="w-4 h-4 ml-1" />
@@ -180,7 +180,7 @@ const Header = () => {
               onMouseLeave={handleDropdownLeave}
             >
               <button
-                className={`flex items-center text-foreground hover:text-primary transition-colors font-medium relative group ${
+                className={`flex items-center text-foreground hover:text-primary transition-colors font-medium relative group drop-shadow-md ${
                   ['/blog', '/cases', '/diferenciais'].includes(location.pathname) ? 'text-primary' : ''
                 }`}
               >
@@ -214,7 +214,7 @@ const Header = () => {
 
             <Link
               to="/sobre"
-              className={`text-foreground hover:text-primary transition-colors font-medium relative group ${
+              className={`text-foreground hover:text-primary transition-colors font-medium relative group drop-shadow-md ${
                 location.pathname === '/sobre' ? 'text-primary' : ''
               }`}
             >
@@ -224,7 +224,7 @@ const Header = () => {
             
             <Link
               to="/contato"
-              className={`text-foreground hover:text-primary transition-colors font-medium relative group ${
+              className={`text-foreground hover:text-primary transition-colors font-medium relative group drop-shadow-md ${
                 location.pathname === '/contato' ? 'text-primary' : ''
               }`}
             >
