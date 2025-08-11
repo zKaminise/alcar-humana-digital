@@ -20,17 +20,19 @@ const Header = () => {
   }, []);
 
   const solutionsMenu = [
-    { label: 'Consultoria Estratégica', href: '/solucoes', description: 'Planejamento e implementação estratégica' },
-    { label: 'Desenvolvimento de Cultura', href: '/solucoes', description: 'Construção de culturas organizacionais' },
-    { label: 'Treinamentos e Capacitação', href: '/solucoes', description: 'Programas de desenvolvimento' },
-    { label: 'Gestão de Pessoas', href: '/solucoes', description: 'Soluções completas para RH' }
+    { label: 'Consultoria Estratégica', href: '/solucoes/consultoria-estrategica', description: 'Planejamento e implementação estratégica' },
+    { label: 'Desenvolvimento de Cultura', href: '/solucoes/desenvolvimento-cultura', description: 'Construção de culturas organizacionais' },
+    { label: 'Treinamentos e Capacitação', href: '/solucoes/treinamentos-capacitacao', description: 'Programas de desenvolvimento' },
+    { label: 'Gestão de Pessoas', href: '/solucoes/gestao-pessoas', description: 'Soluções completas para RH' }
   ];
 
   const segmentosMenu = [
-    { label: 'Tecnologia', href: '/cases', description: 'Soluções para empresas de tech' },
-    { label: 'Saúde', href: '/cases', description: 'Especialização em setor de saúde' },
-    { label: 'Varejo', href: '/cases', description: 'Estratégias para varejo' },
-    { label: 'Indústria', href: '/cases', description: 'Consultoria industrial' }
+    { label: 'Agronegócio', href: '/segmentos/agronegocio', description: 'Soluções para o setor agropecuário' },
+    { label: 'Alimentos e Bebidas', href: '/segmentos/alimentos-bebidas', description: 'Especialização em indústria alimentícia' },
+    { label: 'Energia', href: '/segmentos/energia', description: 'Consultoria para setor energético' },
+    { label: 'Financeiro', href: '/segmentos/financeiro', description: 'Soluções para instituições financeiras' },
+    { label: 'Varejo Farma', href: '/segmentos/varejo-farma', description: 'Especialização em farmácias' },
+    { label: 'Educação', href: '/segmentos/educacao', description: 'Consultoria para instituições de ensino' }
   ];
 
   const conteudoMenu = [
@@ -271,41 +273,66 @@ const Header = () => {
               >
                 Início
               </Link>
-              <Link
-                to="/solucoes"
-                className="block w-full text-left px-4 py-3 text-foreground hover:text-primary hover:bg-muted transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Soluções
-              </Link>
+              
+              {/* Soluções - Mobile */}
+              <div className="px-4 py-2">
+                <div className="font-medium text-foreground mb-2">Soluções</div>
+                <div className="pl-4 space-y-1">
+                  {solutionsMenu.map((item) => (
+                    <Link
+                      key={item.label}
+                      to={item.href}
+                      className="block py-2 text-sm text-muted-foreground hover:text-primary hover:bg-muted rounded px-2 transition-colors"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {/* Segmentos - Mobile */}
+              <div className="px-4 py-2">
+                <div className="font-medium text-foreground mb-2">Segmentos</div>
+                <div className="pl-4 space-y-1">
+                  {segmentosMenu.map((item) => (
+                    <Link
+                      key={item.label}
+                      to={item.href}
+                      className="block py-2 text-sm text-muted-foreground hover:text-primary hover:bg-muted rounded px-2 transition-colors"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {/* Conteúdo - Mobile */}
+              <div className="px-4 py-2">
+                <div className="font-medium text-foreground mb-2">Conteúdo</div>
+                <div className="pl-4 space-y-1">
+                  {conteudoMenu.map((item) => (
+                    <Link
+                      key={item.label}
+                      to={item.href}
+                      className="block py-2 text-sm text-muted-foreground hover:text-primary hover:bg-muted rounded px-2 transition-colors"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
               <Link
                 to="/sobre"
                 className="block w-full text-left px-4 py-3 text-foreground hover:text-primary hover:bg-muted transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Sobre Nós
+                Sobre
               </Link>
-              <Link
-                to="/diferenciais"
-                className="block w-full text-left px-4 py-3 text-foreground hover:text-primary hover:bg-muted transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Diferenciais
-              </Link>
-              <Link
-                to="/cases"
-                className="block w-full text-left px-4 py-3 text-foreground hover:text-primary hover:bg-muted transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Cases
-              </Link>
-              <Link
-                to="/blog"
-                className="block w-full text-left px-4 py-3 text-foreground hover:text-primary hover:bg-muted transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Blog
-              </Link>
+              
               <Link
                 to="/contato"
                 className="block w-full text-left px-4 py-3 text-foreground hover:text-primary hover:bg-muted transition-colors"
