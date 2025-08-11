@@ -2,23 +2,32 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Zap, Leaf, BarChart3, CheckCircle } from 'lucide-react';
+import energiaHero from '@/assets/energia-hero.jpg';
 
 const Energia = () => {
   return (
-    <div className="min-h-screen bg-background pt-20">
-      <div className="container mx-auto px-4 py-16">
-        {/* Hero Section */}
-        <div className="text-center mb-16">
-          <div className="flex justify-center mb-6">
-            <Zap className="w-16 h-16 text-primary" />
+    <div className="min-h-screen bg-background">
+      {/* Hero Banner */}
+      <div className="relative h-[500px] bg-gradient-to-r from-black/80 to-black/60 overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${energiaHero})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50" />
+        <div className="relative container mx-auto px-4 h-full flex items-center">
+          <div className="text-white max-w-3xl">
+            <p className="text-lg font-medium mb-2 text-primary">Segmento</p>
+            <h1 className="text-5xl md:text-6xl font-bold mb-6">
+              ENERGIA
+            </h1>
+            <p className="text-xl md:text-2xl leading-relaxed">
+              Liderança em sustentabilidade e eficiência energética para o futuro do setor
+            </p>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Consultoria para Setor de <span className="text-primary">Energia</span>
-          </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Soluções estratégicas para empresas do setor energético, com foco em eficiência e sustentabilidade
-          </p>
         </div>
+      </div>
+
+      <div className="container mx-auto px-4 py-16">
 
         {/* Services Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">

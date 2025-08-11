@@ -2,23 +2,32 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Sprout, TrendingUp, Users, CheckCircle } from 'lucide-react';
+import agronegocioHero from '@/assets/agronegocio-hero.jpg';
 
 const Agronegocio = () => {
   return (
-    <div className="min-h-screen bg-background pt-20">
-      <div className="container mx-auto px-4 py-16">
-        {/* Hero Section */}
-        <div className="text-center mb-16">
-          <div className="flex justify-center mb-6">
-            <Sprout className="w-16 h-16 text-primary" />
+    <div className="min-h-screen bg-background">
+      {/* Hero Banner */}
+      <div className="relative h-[500px] bg-gradient-to-r from-black/80 to-black/60 overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${agronegocioHero})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50" />
+        <div className="relative container mx-auto px-4 h-full flex items-center">
+          <div className="text-white max-w-3xl">
+            <p className="text-lg font-medium mb-2 text-primary">Segmento</p>
+            <h1 className="text-5xl md:text-6xl font-bold mb-6">
+              AGRONEGÓCIO
+            </h1>
+            <p className="text-xl md:text-2xl leading-relaxed">
+              Maturidade na gestão dos negócios para um setor robusto e preparado frente às tendências e volatilidades do mercado
+            </p>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Consultoria para <span className="text-primary">Agronegócio</span>
-          </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Soluções especializadas para o setor agropecuário, com foco em gestão, produtividade e sustentabilidade
-          </p>
         </div>
+      </div>
+
+      <div className="container mx-auto px-4 py-16">
 
         {/* Services Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
