@@ -7,6 +7,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [dropdownTimeout, setDropdownTimeout] = useState<NodeJS.Timeout | null>(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -39,11 +40,26 @@ const Header = () => {
     { label: 'Recursos', href: '/blog', description: 'Materials e downloads' }
   ];
 
-  const handleDropdownToggle = (menu: string) => {
-    setActiveDropdown(activeDropdown === menu ? null : menu);
+  const handleDropdownEnter = (menu: string) => {
+    if (dropdownTimeout) {
+      clearTimeout(dropdownTimeout);
+      setDropdownTimeout(null);
+    }
+    setActiveDropdown(menu);
+  };
+
+  const handleDropdownLeave = () => {
+    const timeout = setTimeout(() => {
+      setActiveDropdown(null);
+    }, 150); // Delay de 150ms antes de fechar
+    setDropdownTimeout(timeout);
   };
 
   const closeDropdowns = () => {
+    if (dropdownTimeout) {
+      clearTimeout(dropdownTimeout);
+      setDropdownTimeout(null);
+    }
     setActiveDropdown(null);
   };
 
@@ -82,8 +98,8 @@ const Header = () => {
             {/* Soluções Dropdown */}
             <div 
               className="relative"
-              onMouseEnter={() => setActiveDropdown('solucoes')}
-              onMouseLeave={closeDropdowns}
+              onMouseEnter={() => handleDropdownEnter('solucoes')}
+              onMouseLeave={handleDropdownLeave}
             >
               <button
                 className={`flex items-center text-foreground hover:text-primary transition-colors font-medium relative group ${
@@ -96,7 +112,11 @@ const Header = () => {
               </button>
               
               {activeDropdown === 'solucoes' && (
-                <div className="absolute top-full left-0 mt-2 w-80 bg-card rounded-lg shadow-elegant border border-border p-6 animate-fade-in">
+                <div 
+                  className="absolute top-full left-0 mt-1 w-80 bg-card rounded-lg shadow-elegant border border-border p-6 animate-fade-in z-50"
+                  onMouseEnter={() => handleDropdownEnter('solucoes')}
+                  onMouseLeave={handleDropdownLeave}
+                >
                   <div className="space-y-3">
                     {solutionsMenu.map((item) => (
                       <Link
@@ -117,8 +137,8 @@ const Header = () => {
             {/* Segmentos Dropdown */}
             <div 
               className="relative"
-              onMouseEnter={() => setActiveDropdown('segmentos')}
-              onMouseLeave={closeDropdowns}
+              onMouseEnter={() => handleDropdownEnter('segmentos')}
+              onMouseLeave={handleDropdownLeave}
             >
               <button
                 className="flex items-center text-foreground hover:text-primary transition-colors font-medium relative group"
@@ -129,7 +149,11 @@ const Header = () => {
               </button>
               
               {activeDropdown === 'segmentos' && (
-                <div className="absolute top-full left-0 mt-2 w-80 bg-card rounded-lg shadow-elegant border border-border p-6 animate-fade-in">
+                <div 
+                  className="absolute top-full left-0 mt-1 w-80 bg-card rounded-lg shadow-elegant border border-border p-6 animate-fade-in z-50"
+                  onMouseEnter={() => handleDropdownEnter('segmentos')}
+                  onMouseLeave={handleDropdownLeave}
+                >
                   <div className="space-y-3">
                     {segmentosMenu.map((item) => (
                       <Link
@@ -150,8 +174,8 @@ const Header = () => {
             {/* Conteúdo Dropdown */}
             <div 
               className="relative"
-              onMouseEnter={() => setActiveDropdown('conteudo')}
-              onMouseLeave={closeDropdowns}
+              onMouseEnter={() => handleDropdownEnter('conteudo')}
+              onMouseLeave={handleDropdownLeave}
             >
               <button
                 className={`flex items-center text-foreground hover:text-primary transition-colors font-medium relative group ${
@@ -164,7 +188,11 @@ const Header = () => {
               </button>
               
               {activeDropdown === 'conteudo' && (
-                <div className="absolute top-full left-0 mt-2 w-80 bg-card rounded-lg shadow-elegant border border-border p-6 animate-fade-in">
+                <div 
+                  className="absolute top-full left-0 mt-1 w-80 bg-card rounded-lg shadow-elegant border border-border p-6 animate-fade-in z-50"
+                  onMouseEnter={() => handleDropdownEnter('conteudo')}
+                  onMouseLeave={handleDropdownLeave}
+                >
                   <div className="space-y-3">
                     {conteudoMenu.map((item) => (
                       <Link
