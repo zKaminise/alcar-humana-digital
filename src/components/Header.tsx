@@ -89,17 +89,6 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
-            <Link
-              to="/"
-              className={`transition-colors font-medium relative group drop-shadow-md ${
-                isScrolled 
-                  ? `text-foreground hover:text-primary ${location.pathname === '/' ? 'text-primary' : ''}`
-                  : `text-white hover:text-white/80 ${location.pathname === '/' ? 'text-white' : ''}`
-              }`}
-            >
-              Início
-              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-            </Link>
 
             {/* Soluções Dropdown */}
             <div 
@@ -280,13 +269,6 @@ const Header = () => {
         {isMenuOpen && (
           <div className="lg:hidden bg-background border-t border-border">
             <nav className="py-4 space-y-2">
-              <Link
-                to="/"
-                className="block w-full text-left px-4 py-3 text-foreground hover:text-primary hover:bg-muted transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Início
-              </Link>
               
               {/* Soluções - Mobile */}
               <div className="px-4 py-2">
