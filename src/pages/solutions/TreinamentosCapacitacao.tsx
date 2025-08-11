@@ -2,23 +2,32 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { BookOpen, Users, Award, CheckCircle } from 'lucide-react';
+import treinamentosCapacitacaoHero from '@/assets/treinamentos-capacitacao-hero.jpg';
 
 const TreinamentosCapacitacao = () => {
   return (
-    <div className="min-h-screen bg-background pt-20">
-      <div className="container mx-auto px-4 py-16">
-        {/* Hero Section */}
-        <div className="text-center mb-16">
-          <div className="flex justify-center mb-6">
-            <BookOpen className="w-16 h-16 text-primary" />
+    <div className="min-h-screen bg-background">
+      {/* Hero Banner */}
+      <div className="relative h-[500px] bg-gradient-to-r from-black/80 to-black/60 overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${treinamentosCapacitacaoHero})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50" />
+        <div className="relative container mx-auto px-4 h-full flex items-center">
+          <div className="text-white max-w-3xl">
+            <p className="text-lg font-medium mb-2 text-primary">Solução</p>
+            <h1 className="text-5xl md:text-6xl font-bold mb-6">
+              TREINAMENTOS E CAPACITAÇÃO
+            </h1>
+            <p className="text-xl md:text-2xl leading-relaxed">
+              Desenvolvimento humano estratégico que potencializa talentos e impulsiona resultados organizacionais
+            </p>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            <span className="text-primary">Treinamentos e Capacitação</span>
-          </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Programas de desenvolvimento personalizados para potencializar o desempenho de pessoas e equipes
-          </p>
         </div>
+      </div>
+
+      <div className="container mx-auto px-4 py-16">
 
         {/* Services Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">

@@ -2,23 +2,32 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Users, UserCheck, TrendingUp, CheckCircle } from 'lucide-react';
+import gestaoPessoasHero from '@/assets/gestao-pessoas-hero.jpg';
 
 const GestaoPessoas = () => {
   return (
-    <div className="min-h-screen bg-background pt-20">
-      <div className="container mx-auto px-4 py-16">
-        {/* Hero Section */}
-        <div className="text-center mb-16">
-          <div className="flex justify-center mb-6">
-            <Users className="w-16 h-16 text-primary" />
+    <div className="min-h-screen bg-background">
+      {/* Hero Banner */}
+      <div className="relative h-[500px] bg-gradient-to-r from-black/80 to-black/60 overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${gestaoPessoasHero})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50" />
+        <div className="relative container mx-auto px-4 h-full flex items-center">
+          <div className="text-white max-w-3xl">
+            <p className="text-lg font-medium mb-2 text-primary">Solução</p>
+            <h1 className="text-5xl md:text-6xl font-bold mb-6">
+              GESTÃO DE PESSOAS
+            </h1>
+            <p className="text-xl md:text-2xl leading-relaxed">
+              RH estratégico que transforma pessoas em principal ativo competitivo da organização
+            </p>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            <span className="text-primary">Gestão de Pessoas</span>
-          </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Soluções completas para RH que transformam a gestão de pessoas em vantagem competitiva
-          </p>
         </div>
+      </div>
+
+      <div className="container mx-auto px-4 py-16">
 
         {/* Services Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
