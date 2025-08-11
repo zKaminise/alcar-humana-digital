@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Menu, X, Phone, MessageSquare } from 'lucide-react';
+import { Menu, X, Phone, MessageSquare, ChevronDown } from 'lucide-react';
+import { useLocation, Link } from 'react-router-dom';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,22 +18,33 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navigationItems = [
-    { label: 'Início', href: '#inicio' },
-    { label: 'Sobre Nós', href: '#sobre' },
-    { label: 'Soluções', href: '#solucoes' },
-    { label: 'Diferenciais', href: '#diferenciais' },
-    { label: 'Cases', href: '#cases' },
-    { label: 'Blog', href: '#blog' },
-    { label: 'Contato', href: '#contato' }
+  const solutionsMenu = [
+    { label: 'Consultoria Estratégica', href: '/solucoes', description: 'Planejamento e implementação estratégica' },
+    { label: 'Desenvolvimento de Cultura', href: '/solucoes', description: 'Construção de culturas organizacionais' },
+    { label: 'Treinamentos e Capacitação', href: '/solucoes', description: 'Programas de desenvolvimento' },
+    { label: 'Gestão de Pessoas', href: '/solucoes', description: 'Soluções completas para RH' }
   ];
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMenuOpen(false);
-    }
+  const segmentosMenu = [
+    { label: 'Tecnologia', href: '/cases', description: 'Soluções para empresas de tech' },
+    { label: 'Saúde', href: '/cases', description: 'Especialização em setor de saúde' },
+    { label: 'Varejo', href: '/cases', description: 'Estratégias para varejo' },
+    { label: 'Indústria', href: '/cases', description: 'Consultoria industrial' }
+  ];
+
+  const conteudoMenu = [
+    { label: 'Blog', href: '/blog', description: 'Artigos e insights' },
+    { label: 'Cases de Sucesso', href: '/cases', description: 'Projetos realizados' },
+    { label: 'Metodologia', href: '/diferenciais', description: 'Nossa abordagem exclusiva' },
+    { label: 'Recursos', href: '/blog', description: 'Materials e downloads' }
+  ];
+
+  const handleDropdownToggle = (menu: string) => {
+    setActiveDropdown(activeDropdown === menu ? null : menu);
+  };
+
+  const closeDropdowns = () => {
+    setActiveDropdown(null);
   };
 
   return (
@@ -45,26 +59,138 @@ const Header = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <button 
-              onClick={() => scrollToSection('#inicio')}
+            <Link 
+              to="/"
               className="text-2xl font-bold text-primary hover:text-primary-light transition-colors"
             >
               Alçar Humà
-            </button>
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
-            {navigationItems.map((item) => (
+            <Link
+              to="/"
+              className={`text-foreground hover:text-primary transition-colors font-medium relative group ${
+                location.pathname === '/' ? 'text-primary' : ''
+              }`}
+            >
+              Início
+              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+
+            {/* Soluções Dropdown */}
+            <div 
+              className="relative"
+              onMouseEnter={() => setActiveDropdown('solucoes')}
+              onMouseLeave={closeDropdowns}
+            >
               <button
-                key={item.label}
-                onClick={() => scrollToSection(item.href)}
-                className="text-foreground hover:text-primary transition-colors font-medium relative group"
+                className={`flex items-center text-foreground hover:text-primary transition-colors font-medium relative group ${
+                  location.pathname === '/solucoes' ? 'text-primary' : ''
+                }`}
               >
-                {item.label}
+                Soluções
+                <ChevronDown className="w-4 h-4 ml-1" />
                 <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
               </button>
-            ))}
+              
+              {activeDropdown === 'solucoes' && (
+                <div className="absolute top-full left-0 mt-2 w-80 bg-card rounded-lg shadow-elegant border border-border p-6 animate-fade-in">
+                  <div className="space-y-3">
+                    {solutionsMenu.map((item) => (
+                      <Link
+                        key={item.label}
+                        to={item.href}
+                        className="block p-3 rounded-lg hover:bg-muted transition-colors"
+                        onClick={closeDropdowns}
+                      >
+                        <div className="font-medium text-foreground">{item.label}</div>
+                        <div className="text-sm text-muted-foreground">{item.description}</div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Segmentos Dropdown */}
+            <div 
+              className="relative"
+              onMouseEnter={() => setActiveDropdown('segmentos')}
+              onMouseLeave={closeDropdowns}
+            >
+              <button
+                className="flex items-center text-foreground hover:text-primary transition-colors font-medium relative group"
+              >
+                Segmentos
+                <ChevronDown className="w-4 h-4 ml-1" />
+                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+              </button>
+              
+              {activeDropdown === 'segmentos' && (
+                <div className="absolute top-full left-0 mt-2 w-80 bg-card rounded-lg shadow-elegant border border-border p-6 animate-fade-in">
+                  <div className="space-y-3">
+                    {segmentosMenu.map((item) => (
+                      <Link
+                        key={item.label}
+                        to={item.href}
+                        className="block p-3 rounded-lg hover:bg-muted transition-colors"
+                        onClick={closeDropdowns}
+                      >
+                        <div className="font-medium text-foreground">{item.label}</div>
+                        <div className="text-sm text-muted-foreground">{item.description}</div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Conteúdo Dropdown */}
+            <div 
+              className="relative"
+              onMouseEnter={() => setActiveDropdown('conteudo')}
+              onMouseLeave={closeDropdowns}
+            >
+              <button
+                className={`flex items-center text-foreground hover:text-primary transition-colors font-medium relative group ${
+                  ['/blog', '/cases', '/diferenciais'].includes(location.pathname) ? 'text-primary' : ''
+                }`}
+              >
+                Conteúdo
+                <ChevronDown className="w-4 h-4 ml-1" />
+                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+              </button>
+              
+              {activeDropdown === 'conteudo' && (
+                <div className="absolute top-full left-0 mt-2 w-80 bg-card rounded-lg shadow-elegant border border-border p-6 animate-fade-in">
+                  <div className="space-y-3">
+                    {conteudoMenu.map((item) => (
+                      <Link
+                        key={item.label}
+                        to={item.href}
+                        className="block p-3 rounded-lg hover:bg-muted transition-colors"
+                        onClick={closeDropdowns}
+                      >
+                        <div className="font-medium text-foreground">{item.label}</div>
+                        <div className="text-sm text-muted-foreground">{item.description}</div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <Link
+              to="/sobre"
+              className={`text-foreground hover:text-primary transition-colors font-medium relative group ${
+                location.pathname === '/sobre' ? 'text-primary' : ''
+              }`}
+            >
+              Sobre
+              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+            </Link>
           </nav>
 
           {/* CTA Buttons - Desktop */}
@@ -100,15 +226,55 @@ const Header = () => {
         {isMenuOpen && (
           <div className="lg:hidden bg-background border-t border-border">
             <nav className="py-4 space-y-2">
-              {navigationItems.map((item) => (
-                <button
-                  key={item.label}
-                  onClick={() => scrollToSection(item.href)}
-                  className="block w-full text-left px-4 py-3 text-foreground hover:text-primary hover:bg-muted transition-colors"
-                >
-                  {item.label}
-                </button>
-              ))}
+              <Link
+                to="/"
+                className="block w-full text-left px-4 py-3 text-foreground hover:text-primary hover:bg-muted transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Início
+              </Link>
+              <Link
+                to="/solucoes"
+                className="block w-full text-left px-4 py-3 text-foreground hover:text-primary hover:bg-muted transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Soluções
+              </Link>
+              <Link
+                to="/sobre"
+                className="block w-full text-left px-4 py-3 text-foreground hover:text-primary hover:bg-muted transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Sobre Nós
+              </Link>
+              <Link
+                to="/diferenciais"
+                className="block w-full text-left px-4 py-3 text-foreground hover:text-primary hover:bg-muted transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Diferenciais
+              </Link>
+              <Link
+                to="/cases"
+                className="block w-full text-left px-4 py-3 text-foreground hover:text-primary hover:bg-muted transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Cases
+              </Link>
+              <Link
+                to="/blog"
+                className="block w-full text-left px-4 py-3 text-foreground hover:text-primary hover:bg-muted transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Blog
+              </Link>
+              <Link
+                to="/contato"
+                className="block w-full text-left px-4 py-3 text-foreground hover:text-primary hover:bg-muted transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Contato
+              </Link>
               <div className="px-4 pt-4 space-y-3 border-t border-border">
                 <Button
                   variant="outline"
