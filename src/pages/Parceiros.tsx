@@ -48,45 +48,53 @@ const Parceiros = () => {
           </div>
 
           <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            <div className="text-center space-y-4">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
-                <Handshake className="w-8 h-8 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold text-foreground">Parcerias Estratégicas</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                Construímos relacionamentos duradouros baseados em confiança mútua e resultados compartilhados.
-              </p>
-            </div>
+            <Card className="text-center space-y-4 p-6 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+              <CardContent className="p-0">
+                <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/5 rounded-full flex items-center justify-center mx-auto">
+                  <Handshake className="w-8 h-8 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold text-foreground mt-4">Parcerias Estratégicas</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  Construímos relacionamentos duradouros baseados em confiança mútua e resultados compartilhados.
+                </p>
+              </CardContent>
+            </Card>
 
-            <div className="text-center space-y-4">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
-                <BarChart3 className="w-8 h-8 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold text-foreground">Crescimento Conjunto</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                Nossos parceiros crescem conosco através de oportunidades exclusivas e projetos colaborativos.
-              </p>
-            </div>
+            <Card className="text-center space-y-4 p-6 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+              <CardContent className="p-0">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-500/20 to-blue-300/10 rounded-full flex items-center justify-center mx-auto">
+                  <BarChart3 className="w-8 h-8 text-blue-600" />
+                </div>
+                <h3 className="text-xl font-bold text-foreground mt-4">Crescimento Conjunto</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  Nossos parceiros crescem conosco através de oportunidades exclusivas e projetos colaborativos.
+                </p>
+              </CardContent>
+            </Card>
 
-            <div className="text-center space-y-4">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
-                <Users className="w-8 h-8 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold text-foreground">Rede Especializada</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                Acesso a uma rede qualificada de profissionais e empresas do setor de desenvolvimento humano.
-              </p>
-            </div>
+            <Card className="text-center space-y-4 p-6 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+              <CardContent className="p-0">
+                <div className="w-16 h-16 bg-gradient-to-br from-purple-500/20 to-purple-300/10 rounded-full flex items-center justify-center mx-auto">
+                  <Users className="w-8 h-8 text-purple-600" />
+                </div>
+                <h3 className="text-xl font-bold text-foreground mt-4">Rede Especializada</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  Acesso a uma rede qualificada de profissionais e empresas do setor de desenvolvimento humano.
+                </p>
+              </CardContent>
+            </Card>
 
-            <div className="text-center space-y-4">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
-                <Award className="w-8 h-8 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold text-foreground">Certificações e Reconhecimento</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                Oferecemos certificações e reconhecimento oficial para parceiros qualificados.
-              </p>
-            </div>
+            <Card className="text-center space-y-4 p-6 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+              <CardContent className="p-0">
+                <div className="w-16 h-16 bg-gradient-to-br from-emerald-500/20 to-emerald-300/10 rounded-full flex items-center justify-center mx-auto">
+                  <Award className="w-8 h-8 text-emerald-600" />
+                </div>
+                <h3 className="text-xl font-bold text-foreground mt-4">Certificações e Reconhecimento</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  Oferecemos certificações e reconhecimento oficial para parceiros qualificados.
+                </p>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
