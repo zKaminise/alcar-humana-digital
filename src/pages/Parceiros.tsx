@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Users, Handshake, TrendingUp, Award, Mail, ArrowRight } from "lucide-react";
-import bannerParceiros from "@/assets/banner-parceiros.jpg";
+import bannerParceiros from "@/assets/parceiros-hero.jpg";
 
 const benefits = [
   {
