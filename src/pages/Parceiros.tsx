@@ -131,12 +131,13 @@ const Parceiros = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {currentPartners.map((partner, index) => (
-                <Card 
-                  key={index} 
-                  className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
-                >
+            <div className="max-w-4xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {currentPartners.map((partner, index) => (
+                  <Card 
+                    key={index} 
+                    className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                  >
                   <CardContent className="p-8">
                     <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6">
                       <img 
@@ -155,7 +156,8 @@ const Parceiros = () => {
                     </div>
                   </CardContent>
                 </Card>
-              ))}
+                 ))}
+              </div>
             </div>
           </div>
         </section>
