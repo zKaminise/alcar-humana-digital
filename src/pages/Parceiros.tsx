@@ -131,7 +131,7 @@ const Parceiros = () => {
               </p>
             </div>
 
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-6xl mx-auto">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {currentPartners.map((partner, index) => (
                   <Card 
