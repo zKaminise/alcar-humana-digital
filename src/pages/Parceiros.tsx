@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Handshake, BarChart3, Users, Award, Mail, Building } from 'lucide-react';
+import { Handshake, BarChart3, Users, Award, Mail, Building, ArrowRight } from 'lucide-react';
 import logoEmpresa1 from '@/assets/logo-empresa-1.jpg';
 import logoEmpresa2 from '@/assets/logo-empresa-2.jpg';
 import logoEmpresa3 from '@/assets/logo-empresa-3.jpg';
@@ -265,7 +265,8 @@ const Parceiros = () => {
                       <Mail className="w-4 h-4 mr-2" />
                       Enviar Proposta de Parceria
                     </Button>
-                    <Button variant="outline" className="w-full" size="lg">
+                    <Button variant="outline" className="w-full border-blue-500 text-blue-600 hover:bg-blue-50" size="lg">
+                      <ArrowRight className="w-4 h-4 mr-2" />
                       Agendar Reunião
                     </Button>
                   </div>
