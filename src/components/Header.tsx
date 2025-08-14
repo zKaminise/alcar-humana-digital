@@ -68,7 +68,7 @@ const Header = () => {
               <img 
                 src="/lovable-uploads/7b262c46-4d6f-40ad-aa6b-f7c64b50a1e6.png" 
                 alt="Alçar Humà - Gestão e Pessoas" 
-                className="h-12 w-auto"
+                className="h-16 w-auto"
               />
             </Link>
           </div>
