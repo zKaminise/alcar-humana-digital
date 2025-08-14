@@ -131,7 +131,7 @@ const Parceiros = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-8">
               {currentPartners.map((partner, index) => (
                 <Card 
                   key={index} 
