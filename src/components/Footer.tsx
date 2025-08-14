@@ -53,9 +53,11 @@ const Footer = () => {
           {/* Company Info */}
           <div className="lg:col-span-1">
             <div className="mb-6">
-              <h3 className="text-2xl font-bold text-white mb-2">
-                Alçar Humà
-              </h3>
+              <img 
+                src="/lovable-uploads/e290cf8e-cd03-4d1b-aa14-0b400ec12569.png" 
+                alt="Alçar Humà - Gestão e Pessoas" 
+                className="h-16 w-auto mb-4"
+              />
               <p className="text-sm text-gray-300">
                 Gestão e Pessoas
               </p>
