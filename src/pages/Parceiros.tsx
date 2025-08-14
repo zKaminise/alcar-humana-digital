@@ -131,7 +131,7 @@ const Parceiros = () => {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {currentPartners.map((partner, index) => (
                 <Card 
                   key={index} 
@@ -244,8 +244,8 @@ const Parceiros = () => {
                     </div>
 
                     <div className="flex flex-col sm:flex-row gap-4">
-                      <Button variant="cta" size="lg" className="flex-1">
-                        <Mail className="mr-2 h-5 w-5" />
+                      <Button className="w-full" size="lg">
+                        <Mail className="w-4 h-4 mr-2" />
                         Enviar Proposta de Parceria
                       </Button>
                       <Button variant="outline" size="lg">
