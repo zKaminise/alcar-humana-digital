@@ -265,7 +265,7 @@ const Parceiros = () => {
                       <Mail className="w-4 h-4 mr-2" />
                       Enviar Proposta de Parceria
                     </Button>
-                    <Button variant="outline" className="w-full border-blue-500 text-blue-600 hover:bg-blue-50" size="lg">
+                    <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-white" size="lg">
                       <ArrowRight className="w-4 h-4 mr-2" />
                       Agendar Reunião
                     </Button>
