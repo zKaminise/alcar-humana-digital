@@ -123,8 +123,8 @@ const Parceiros = () => {
         <section className="py-20 bg-accent">
           <div className="container-section">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-foreground mb-6">
-                Parceiros <span className="text-gradient-primary">Atuais</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                Empresas Parceiras
               </h2>
               <p className="text-xl text-muted-foreground">
                 Conheça as organizações que já fazem parte da nossa rede de parceiros.
