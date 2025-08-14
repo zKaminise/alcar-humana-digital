@@ -120,7 +120,7 @@ const Parceiros = () => {
         </section>
 
         {/* Parceiros Atuais */}
-        <section className="py-20 bg-accent">
+        <section className="py-20  bg-muted/50">
           <div className="container-section">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
