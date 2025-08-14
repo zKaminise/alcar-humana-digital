@@ -1,293 +1,267 @@
-import React from 'react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Handshake, BarChart3, Users, Award, Mail, Building, ArrowRight } from 'lucide-react';
-import logoEmpresa1 from '@/assets/logo-empresa-1.jpg';
-import logoEmpresa2 from '@/assets/logo-empresa-2.jpg';
-import logoEmpresa3 from '@/assets/logo-empresa-3.jpg';
-import logoEmpresa4 from '@/assets/logo-empresa-4.jpg';
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { Users, Handshake, TrendingUp, Award, Mail, ArrowRight } from "lucide-react";
+import bannerParceiros from "@/assets/banner-parceiros.jpg";
+
+const benefits = [
+  {
+    icon: Handshake,
+    title: "Parcerias Estratégicas",
+    description: "Construímos relacionamentos duradouros baseados em confiança mútua e resultados compartilhados."
+  },
+  {
+    icon: TrendingUp,
+    title: "Crescimento Conjunto",
+    description: "Nossos parceiros crescem conosco através de oportunidades exclusivas e projetos colaborativos."
+  },
+  {
+    icon: Users,
+    title: "Rede Especializada",
+    description: "Acesso a uma rede qualificada de profissionais e empresas do setor de desenvolvimento humano."
+  },
+  {
+    icon: Award,
+    title: "Certificações e Reconhecimento",
+    description: "Oferecemos certificações e reconhecimento oficial para parceiros qualificados."
+  }
+];
+
+const currentPartners = [
+  {
+    name: "Instituto de Liderança Empresarial",
+    logo: "https://via.placeholder.com/200x100/2563eb/ffffff?text=ILE",
+    description: "Parceria estratégica em programas de desenvolvimento de liderança."
+  },
+  {
+    name: "Consultoria Estratégica Brasil",
+    logo: "https://via.placeholder.com/200x100/dc2626/ffffff?text=CEB",
+    description: "Colaboração em projetos de mapeamento estratégico empresarial."
+  },
+  {
+    name: "Centro de Desenvolvimento Profissional",
+    logo: "https://via.placeholder.com/200x100/16a34a/ffffff?text=CDP",
+    description: "Parceria em cursos e workshops de capacitação profissional."
+  },
+  {
+    name: "Grupo Inovação Corporativa",
+    logo: "https://via.placeholder.com/200x100/7c3aed/ffffff?text=GIC",
+    description: "Projetos conjuntos em transformação digital e inovação."
+  }
+];
 
 const Parceiros = () => {
   return (
-    <div className="min-h-screen bg-background">
-      {/* Hero Section */}
-      <section className="relative pt-32 pb-20 bg-gradient-to-r from-black/80 to-black/60 overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(/src/assets/parceiros-hero.jpg)` }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50" />
-        <div className="relative text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Nossos Parceiros
-            </h1>
-            <p className="text-xl md:text-2xl opacity-90">
-              Construindo relacionamentos sólidos e gerando valor mútuo
-            </p>
+    <div className="min-h-screen">
+      <Header />
+      <main className="pt-20">
+        {/* Hero Section */}
+        <section 
+          className="relative py-32 bg-cover bg-center text-white"
+          style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${bannerParceiros})` }}
+        >
+          <div className="container-section relative z-10">
+            <div className="max-w-4xl mx-auto text-center">
+              <h1 className="text-4xl md:text-6xl font-bold mb-6">
+                Nossos Parceiros
+              </h1>
+              <p className="text-xl md:text-2xl leading-relaxed opacity-90">
+                Construímos relacionamentos estratégicos que geram valor mútuo e 
+                amplificam nosso impacto no desenvolvimento humano e empresarial.
+              </p>
+            </div>
           </div>
-        </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Por que ser um Parceiro Alçar */}
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-              Por que ser um Parceiro Alçar?
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Oferecemos uma parceria estratégica que vai além do tradicional, criando
-              oportunidades de crescimento mútuo e impacto conjunto.
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            <Card className="text-center bg-white border-0 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-              <CardContent className="p-8">
-                <div className="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Handshake className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-foreground mb-4">Parcerias Estratégicas</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  Construímos relacionamentos duradouros baseados em confiança mútua e resultados compartilhados.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center bg-white border-0 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-              <CardContent className="p-8">
-                <div className="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <BarChart3 className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-foreground mb-4">Crescimento Conjunto</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  Nossos parceiros crescem conosco através de oportunidades exclusivas e projetos colaborativos.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center bg-white border-0 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-              <CardContent className="p-8">
-                <div className="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Users className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-foreground mb-4">Rede Especializada</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  Acesso a uma rede qualificada de profissionais e empresas do setor de desenvolvimento humano.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center bg-white border-0 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-              <CardContent className="p-8">
-                <div className="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Award className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-foreground mb-4">Certificações e Reconhecimento</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  Oferecemos certificações e reconhecimento oficial para parceiros qualificados.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Parceiros Atuais */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-              Parceiros Atuais
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Conheça as organizações que já fazem parte da nossa rede de parceiros.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <Card className="hover:shadow-lg transition-shadow duration-300">
-              <CardContent className="p-6 flex items-center space-x-4">
-                <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
-                  <img 
-                    src={logoEmpresa1} 
-                    alt="Instituto de Liderança"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-foreground mb-2">
-                    Instituto de Liderança Empresarial
-                  </h3>
-                  <p className="text-muted-foreground text-sm">
-                    Parceria estratégica em programas de desenvolvimento de liderança.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:shadow-lg transition-shadow duration-300">
-              <CardContent className="p-6 flex items-center space-x-4">
-                <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
-                  <img 
-                    src={logoEmpresa2} 
-                    alt="Consultoria Estratégica"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-foreground mb-2">
-                    Consultoria Estratégica Brasil
-                  </h3>
-                  <p className="text-muted-foreground text-sm">
-                    Colaboração em projetos de mapeamento estratégico empresarial.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:shadow-lg transition-shadow duration-300">
-              <CardContent className="p-6 flex items-center space-x-4">
-                <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
-                  <img 
-                    src={logoEmpresa3} 
-                    alt="Centro de Desenvolvimento"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-foreground mb-2">
-                    Centro de Desenvolvimento Profissional
-                  </h3>
-                  <p className="text-muted-foreground text-sm">
-                    Parceria em cursos e workshops de capacitação profissional.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:shadow-lg transition-shadow duration-300">
-              <CardContent className="p-6 flex items-center space-x-4">
-                <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
-                  <img 
-                    src={logoEmpresa4} 
-                    alt="Grupo Inovação"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-foreground mb-2">
-                    Grupo Inovação Corporativa
-                  </h3>
-                  <p className="text-muted-foreground text-sm">
-                    Projetos conjuntos em transformação digital e inovação.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Seja um Parceiro Alçar */}
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Seja um Parceiro Alçar
+        {/* Benefícios da Parceria */}
+        <section className="py-20 bg-background">
+          <div className="container-section">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold text-foreground mb-6">
+                Por que ser um <span className="text-gradient-primary">Parceiro Alçar</span>?
               </h2>
-              <p className="text-lg text-muted-foreground">
-                Interessado em fazer parte da nossa rede? Preencha o formulário abaixo e entraremos em contato para discutir oportunidades de parceria.
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                Oferecemos uma parceria estratégica que vai além do tradicional, 
+                criando oportunidades de crescimento mútuo e impacto conjunto.
               </p>
             </div>
 
-            <Card className="shadow-lg">
-              <CardContent className="p-8">
-                <form className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium text-foreground">
-                        Nome Completo <span className="text-destructive">*</span>
-                      </label>
-                      <Input placeholder="Seu nome completo" />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium text-foreground">
-                        Empresa <span className="text-destructive">*</span>
-                      </label>
-                      <Input placeholder="Nome da sua empresa" />
-                    </div>
-                  </div>
-
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium text-foreground">
-                        E-mail <span className="text-destructive">*</span>
-                      </label>
-                      <Input type="email" placeholder="seu@email.com" />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium text-foreground">
-                        Telefone <span className="text-destructive">*</span>
-                      </label>
-                      <Input placeholder="(11) 99999-9999" />
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-foreground">
-                      Cargo/Função
-                    </label>
-                    <Input placeholder="Seu cargo na empresa" />
-                  </div>
-
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-foreground">
-                      Área de Interesse para Parceria <span className="text-destructive">*</span>
-                    </label>
-                    <Textarea 
-                      placeholder="Descreva qual área de parceria mais lhe interessa e como podemos trabalhar juntos..."
-                      rows={4}
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-foreground">
-                      Informações da Empresa
-                    </label>
-                    <Textarea 
-                      placeholder="Conte-nos mais sobre sua empresa, área de atuação, número de funcionários, etc."
-                      rows={4}
-                    />
-                  </div>
-
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <Button className="w-full" size="lg">
-                      <Mail className="w-4 h-4 mr-2" />
-                      Enviar Proposta de Parceria
-                    </Button>
-                    <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-white" size="lg">
-                      <ArrowRight className="w-4 h-4 mr-2" />
-                      Agendar Reunião
-                    </Button>
-                  </div>
-
-                  <p className="text-xs text-muted-foreground text-center">
-                    * Campos obrigatórios. Retornaremos em até 24 horas.
-                  </p>
-                </form>
-              </CardContent>
-            </Card>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {benefits.map((benefit, index) => {
+                const IconComponent = benefit.icon;
+                return (
+                  <Card 
+                    key={index} 
+                    className="text-center border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                  >
+                    <CardHeader className="pb-4">
+                      <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center shadow-lg">
+                        <IconComponent className="h-8 w-8 text-white" />
+                      </div>
+                      <CardTitle className="text-lg font-semibold">
+                        {benefit.title}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <CardDescription className="text-muted-foreground leading-relaxed">
+                        {benefit.description}
+                      </CardDescription>
+                    </CardContent>
+                  </Card>
+                );
+              })}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* Parceiros Atuais */}
+        <section className="py-20 bg-accent">
+          <div className="container-section">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold text-foreground mb-6">
+                Parceiros <span className="text-gradient-primary">Atuais</span>
+              </h2>
+              <p className="text-xl text-muted-foreground">
+                Conheça as organizações que já fazem parte da nossa rede de parceiros.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {currentPartners.map((partner, index) => (
+                <Card 
+                  key={index} 
+                  className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                >
+                  <CardContent className="p-8">
+                    <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6">
+                      <img 
+                        src={partner.logo} 
+                        alt={partner.name}
+                        className="w-32 h-16 object-contain bg-gray-50 rounded-lg p-2"
+                      />
+                      <div className="flex-1 text-center sm:text-left">
+                        <h3 className="text-xl font-semibold text-foreground mb-2">
+                          {partner.name}
+                        </h3>
+                        <p className="text-muted-foreground leading-relaxed">
+                          {partner.description}
+                        </p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Seja um Parceiro */}
+        <section className="py-20 bg-background">
+          <div className="container-section">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="text-4xl font-bold text-foreground mb-6">
+                  Seja um <span className="text-gradient-primary">Parceiro Alçar</span>
+                </h2>
+                <p className="text-xl text-muted-foreground">
+                  Interessado em fazer parte da nossa rede? Preencha o formulário abaixo 
+                  e entraremos em contato para discutir oportunidades de parceria.
+                </p>
+              </div>
+
+              <Card className="border-0 shadow-xl">
+                <CardContent className="p-8">
+                  <form className="space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <Label htmlFor="nome">Nome Completo *</Label>
+                        <Input 
+                          id="nome" 
+                          placeholder="Seu nome completo"
+                          className="h-12"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="empresa">Empresa *</Label>
+                        <Input 
+                          id="empresa" 
+                          placeholder="Nome da sua empresa"
+                          className="h-12"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <Label htmlFor="email">E-mail *</Label>
+                        <Input 
+                          id="email" 
+                          type="email" 
+                          placeholder="seu@email.com"
+                          className="h-12"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="telefone">Telefone *</Label>
+                        <Input 
+                          id="telefone" 
+                          placeholder="(11) 99999-9999"
+                          className="h-12"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="cargo">Cargo/Função</Label>
+                      <Input 
+                        id="cargo" 
+                        placeholder="Seu cargo na empresa"
+                        className="h-12"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="interesse">Área de Interesse para Parceria *</Label>
+                      <Textarea 
+                        id="interesse" 
+                        placeholder="Descreva qual área de parceria mais lhe interessa e como podemos trabalhar juntos..."
+                        className="min-h-32"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="empresa-info">Informações da Empresa</Label>
+                      <Textarea 
+                        id="empresa-info" 
+                        placeholder="Conte-nos mais sobre sua empresa, área de atuação, número de funcionários, etc."
+                        className="min-h-24"
+                      />
+                    </div>
+
+                    <div className="flex flex-col sm:flex-row gap-4">
+                      <Button variant="cta" size="lg" className="flex-1">
+                        <Mail className="mr-2 h-5 w-5" />
+                        Enviar Proposta de Parceria
+                      </Button>
+                      <Button variant="outline" size="lg">
+                        <ArrowRight className="mr-2 h-5 w-5" />
+                        Agendar Reunião
+                      </Button>
+                    </div>
+                  </form>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+      </main>
+      <Footer />
+      <WhatsAppButton />
     </div>
   );
 };
