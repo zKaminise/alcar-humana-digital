@@ -19,34 +19,11 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const solutionsMenu = [
-    { label: 'Consultoria Estratégica', href: '/solucoes/consultoria-estrategica', description: 'Planejamento e implementação estratégica' },
-    { label: 'Desenvolvimento de Cultura', href: '/solucoes/desenvolvimento-cultura', description: 'Construção de culturas organizacionais' },
-    { label: 'Treinamentos e Capacitação', href: '/solucoes/treinamentos-capacitacao', description: 'Programas de desenvolvimento' },
-    { label: 'Gestão de Pessoas', href: '/solucoes/gestao-pessoas', description: 'Soluções completas para RH' }
-  ];
-
-  const segmentosMenu = [
-    { label: 'Agronegócio', href: '/segmentos/agronegocio', description: 'Soluções para o setor agropecuário' },
-    { label: 'Alimentos e Bebidas', href: '/segmentos/alimentos-bebidas', description: 'Especialização em indústria alimentícia' },
-    { label: 'Energia', href: '/segmentos/energia', description: 'Consultoria para setor energético' },
-    { label: 'Financeiro', href: '/segmentos/financeiro', description: 'Soluções para instituições financeiras' },
-    { label: 'Varejo Farma', href: '/segmentos/varejo-farma', description: 'Especialização em farmácias' },
-    { label: 'Educação', href: '/segmentos/educacao', description: 'Consultoria para instituições de ensino' }
-  ];
-
-  const conteudoMenu = [
-    { label: 'Blog', href: '/blog', description: 'Artigos e insights' },
-    { label: 'Cases de Sucesso', href: '/cases', description: 'Projetos realizados' },
-    { label: 'Metodologia', href: '/diferenciais', description: 'Nossa abordagem exclusiva' },
-    { label: 'Recursos', href: '/blog', description: 'Materials e downloads' }
-  ];
-
-  const sobreMenu = [
-    { label: 'Quem Somos', href: '/sobre/quem-somos', description: 'Nossa história e missão' },
-    { label: 'Nossa Expertise', href: '/sobre/nossa-expertise', description: 'Áreas de atuação e metodologia' },
-    { label: 'Trabalhe Conosco', href: '/sobre/trabalhe-conosco', description: 'Oportunidades de carreira' },
-    { label: 'Fale Conosco', href: '/sobre/fale-conosco', description: 'Entre em contato conosco' }
+  const servicosMenu = [
+    { label: 'Mapeamento Estratégico', href: '/servicos/mapeamento-estrategico', description: 'Planejamento estratégico e análise organizacional' },
+    { label: 'Desenvolvimento Pessoal', href: '/servicos/desenvolvimento-pessoal', description: 'Capacitação e crescimento individual' },
+    { label: 'Mentorias e Consultorias', href: '/servicos/mentorias-consultorias', description: 'Orientação especializada e consultoria' },
+    { label: 'Palestras e Workshops', href: '/servicos/palestras-workshops', description: 'Eventos e capacitações presenciais' }
   ];
 
   const handleDropdownEnter = (menu: string) => {
@@ -96,33 +73,56 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
+            <Link
+              to="/"
+              className={`transition-colors font-medium relative group drop-shadow-md ${
+                isScrolled 
+                  ? `text-foreground hover:text-primary ${location.pathname === '/' ? 'text-primary' : ''}`
+                  : `text-white hover:text-white/80 ${location.pathname === '/' ? 'text-white' : ''}`
+              }`}
+            >
+              Home
+              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+            </Link>
 
-            {/* Soluções Dropdown */}
+            <Link
+              to="/quem-somos"
+              className={`transition-colors font-medium relative group drop-shadow-md ${
+                isScrolled 
+                  ? `text-foreground hover:text-primary ${location.pathname === '/quem-somos' ? 'text-primary' : ''}`
+                  : `text-white hover:text-white/80 ${location.pathname === '/quem-somos' ? 'text-white' : ''}`
+              }`}
+            >
+              Quem Somos
+              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+
+            {/* Serviços Dropdown */}
             <div 
               className="relative"
-              onMouseEnter={() => handleDropdownEnter('solucoes')}
+              onMouseEnter={() => handleDropdownEnter('servicos')}
               onMouseLeave={handleDropdownLeave}
             >
               <button
                 className={`flex items-center transition-colors font-medium relative group drop-shadow-md ${
                   isScrolled 
-                    ? `text-foreground hover:text-primary ${location.pathname === '/solucoes' ? 'text-primary' : ''}`
-                    : `text-white hover:text-white/80 ${location.pathname === '/solucoes' ? 'text-white' : ''}`
+                    ? `text-foreground hover:text-primary ${location.pathname.startsWith('/servicos') ? 'text-primary' : ''}`
+                    : `text-white hover:text-white/80 ${location.pathname.startsWith('/servicos') ? 'text-white' : ''}`
                 }`}
               >
-                Soluções
+                Serviços
                 <ChevronDown className="w-4 h-4 ml-1" />
                 <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
               </button>
               
-              {activeDropdown === 'solucoes' && (
+              {activeDropdown === 'servicos' && (
                 <div 
                   className="absolute top-full left-0 mt-1 w-80 bg-card rounded-lg shadow-elegant border border-border p-6 animate-fade-in z-50"
-                  onMouseEnter={() => handleDropdownEnter('solucoes')}
+                  onMouseEnter={() => handleDropdownEnter('servicos')}
                   onMouseLeave={handleDropdownLeave}
                 >
                   <div className="space-y-3">
-                    {solutionsMenu.map((item) => (
+                    {servicosMenu.map((item) => (
                       <Link
                         key={item.label}
                         to={item.href}
@@ -138,126 +138,29 @@ const Header = () => {
               )}
             </div>
 
-            {/* Segmentos Dropdown */}
-            <div 
-              className="relative"
-              onMouseEnter={() => handleDropdownEnter('segmentos')}
-              onMouseLeave={handleDropdownLeave}
+            <Link
+              to="/parceiros"
+              className={`transition-colors font-medium relative group drop-shadow-md ${
+                isScrolled 
+                  ? `text-foreground hover:text-primary ${location.pathname === '/parceiros' ? 'text-primary' : ''}`
+                  : `text-white hover:text-white/80 ${location.pathname === '/parceiros' ? 'text-white' : ''}`
+              }`}
             >
-              <button
-                className={`flex items-center transition-colors font-medium relative group drop-shadow-md ${
-                  isScrolled ? 'text-foreground hover:text-primary' : 'text-white hover:text-white/80'
-                }`}
-              >
-                Segmentos
-                <ChevronDown className="w-4 h-4 ml-1" />
-                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-              </button>
-              
-              {activeDropdown === 'segmentos' && (
-                <div 
-                  className="absolute top-full left-0 mt-1 w-80 bg-card rounded-lg shadow-elegant border border-border p-6 animate-fade-in z-50"
-                  onMouseEnter={() => handleDropdownEnter('segmentos')}
-                  onMouseLeave={handleDropdownLeave}
-                >
-                  <div className="space-y-3">
-                    {segmentosMenu.map((item) => (
-                      <Link
-                        key={item.label}
-                        to={item.href}
-                        className="block p-3 rounded-lg hover:bg-muted transition-colors"
-                        onClick={closeDropdowns}
-                      >
-                        <div className="font-medium text-foreground">{item.label}</div>
-                        <div className="text-sm text-muted-foreground">{item.description}</div>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
+              Parceiros
+              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+            </Link>
 
-            {/* Conteúdo Dropdown */}
-            <div 
-              className="relative"
-              onMouseEnter={() => handleDropdownEnter('conteudo')}
-              onMouseLeave={handleDropdownLeave}
+            <Link
+              to="/artigos"
+              className={`transition-colors font-medium relative group drop-shadow-md ${
+                isScrolled 
+                  ? `text-foreground hover:text-primary ${location.pathname === '/artigos' ? 'text-primary' : ''}`
+                  : `text-white hover:text-white/80 ${location.pathname === '/artigos' ? 'text-white' : ''}`
+              }`}
             >
-              <button
-                className={`flex items-center transition-colors font-medium relative group drop-shadow-md ${
-                  isScrolled 
-                    ? `text-foreground hover:text-primary ${['/blog', '/cases', '/diferenciais'].includes(location.pathname) ? 'text-primary' : ''}`
-                    : `text-white hover:text-white/80 ${['/blog', '/cases', '/diferenciais'].includes(location.pathname) ? 'text-white' : ''}`
-                }`}
-              >
-                Conteúdo
-                <ChevronDown className="w-4 h-4 ml-1" />
-                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-              </button>
-              
-              {activeDropdown === 'conteudo' && (
-                <div 
-                  className="absolute top-full left-0 mt-1 w-80 bg-card rounded-lg shadow-elegant border border-border p-6 animate-fade-in z-50"
-                  onMouseEnter={() => handleDropdownEnter('conteudo')}
-                  onMouseLeave={handleDropdownLeave}
-                >
-                  <div className="space-y-3">
-                    {conteudoMenu.map((item) => (
-                      <Link
-                        key={item.label}
-                        to={item.href}
-                        className="block p-3 rounded-lg hover:bg-muted transition-colors"
-                        onClick={closeDropdowns}
-                      >
-                        <div className="font-medium text-foreground">{item.label}</div>
-                        <div className="text-sm text-muted-foreground">{item.description}</div>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Sobre Dropdown */}
-            <div 
-              className="relative"
-              onMouseEnter={() => handleDropdownEnter('sobre')}
-              onMouseLeave={handleDropdownLeave}
-            >
-              <button
-                className={`flex items-center transition-colors font-medium relative group drop-shadow-md ${
-                  isScrolled 
-                    ? `text-foreground hover:text-primary ${['/sobre', '/sobre/quem-somos', '/sobre/nossa-expertise', '/sobre/trabalhe-conosco', '/sobre/fale-conosco'].includes(location.pathname) ? 'text-primary' : ''}`
-                    : `text-white hover:text-white/80 ${['/sobre', '/sobre/quem-somos', '/sobre/nossa-expertise', '/sobre/trabalhe-conosco', '/sobre/fale-conosco'].includes(location.pathname) ? 'text-white' : ''}`
-                }`}
-              >
-                Sobre
-                <ChevronDown className="w-4 h-4 ml-1" />
-                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-              </button>
-              
-              {activeDropdown === 'sobre' && (
-                <div 
-                  className="absolute top-full left-0 mt-1 w-80 bg-card rounded-lg shadow-elegant border border-border p-6 animate-fade-in z-50"
-                  onMouseEnter={() => handleDropdownEnter('sobre')}
-                  onMouseLeave={handleDropdownLeave}
-                >
-                  <div className="space-y-3">
-                    {sobreMenu.map((item) => (
-                      <Link
-                        key={item.label}
-                        to={item.href}
-                        className="block p-3 rounded-lg hover:bg-muted transition-colors"
-                        onClick={closeDropdowns}
-                      >
-                        <div className="font-medium text-foreground">{item.label}</div>
-                        <div className="text-sm text-muted-foreground">{item.description}</div>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
+              Artigos
+              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+            </Link>
             
             <Link
               to="/contato"
@@ -284,11 +187,12 @@ const Header = () => {
               (67) 99644-2404
             </Button>
             <Button
-              onClick={() => window.open('https://wa.me/5567996442404', '_blank')}
+              asChild
               className="bg-primary hover:bg-primary-dark text-primary-foreground"
             >
-              <MessageSquare className="w-4 h-4 mr-2" />
-              WhatsApp
+              <Link to="/seja-parceiro">
+                Seja Nosso Parceiro
+              </Link>
             </Button>
           </div>
 
@@ -305,63 +209,27 @@ const Header = () => {
         {isMenuOpen && (
           <div className="lg:hidden bg-background border-t border-border">
             <nav className="py-4 space-y-2">
+              <Link
+                to="/"
+                className="block w-full text-left px-4 py-3 text-foreground hover:text-primary hover:bg-muted transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Home
+              </Link>
               
-              {/* Soluções - Mobile */}
-              <div className="px-4 py-2">
-                <div className="font-medium text-foreground mb-2">Soluções</div>
-                <div className="pl-4 space-y-1">
-                  {solutionsMenu.map((item) => (
-                    <Link
-                      key={item.label}
-                      to={item.href}
-                      className="block py-2 text-sm text-muted-foreground hover:text-primary hover:bg-muted rounded px-2 transition-colors"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              </div>
+              <Link
+                to="/quem-somos"
+                className="block w-full text-left px-4 py-3 text-foreground hover:text-primary hover:bg-muted transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Quem Somos
+              </Link>
 
-              {/* Segmentos - Mobile */}
+              {/* Serviços - Mobile */}
               <div className="px-4 py-2">
-                <div className="font-medium text-foreground mb-2">Segmentos</div>
+                <div className="font-medium text-foreground mb-2">Serviços</div>
                 <div className="pl-4 space-y-1">
-                  {segmentosMenu.map((item) => (
-                    <Link
-                      key={item.label}
-                      to={item.href}
-                      className="block py-2 text-sm text-muted-foreground hover:text-primary hover:bg-muted rounded px-2 transition-colors"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-
-              {/* Conteúdo - Mobile */}
-              <div className="px-4 py-2">
-                <div className="font-medium text-foreground mb-2">Conteúdo</div>
-                <div className="pl-4 space-y-1">
-                  {conteudoMenu.map((item) => (
-                    <Link
-                      key={item.label}
-                      to={item.href}
-                      className="block py-2 text-sm text-muted-foreground hover:text-primary hover:bg-muted rounded px-2 transition-colors"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-
-              {/* Sobre - Mobile */}
-              <div className="px-4 py-2">
-                <div className="font-medium text-foreground mb-2">Sobre</div>
-                <div className="pl-4 space-y-1">
-                  {sobreMenu.map((item) => (
+                  {servicosMenu.map((item) => (
                     <Link
                       key={item.label}
                       to={item.href}
@@ -375,12 +243,29 @@ const Header = () => {
               </div>
 
               <Link
+                to="/parceiros"
+                className="block w-full text-left px-4 py-3 text-foreground hover:text-primary hover:bg-muted transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Parceiros
+              </Link>
+
+              <Link
+                to="/artigos"
+                className="block w-full text-left px-4 py-3 text-foreground hover:text-primary hover:bg-muted transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Artigos
+              </Link>
+
+              <Link
                 to="/contato"
                 className="block w-full text-left px-4 py-3 text-foreground hover:text-primary hover:bg-muted transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Contato
               </Link>
+
               <div className="px-4 pt-4 space-y-3 border-t border-border">
                 <Button
                   variant="outline"
@@ -392,11 +277,12 @@ const Header = () => {
                   (67) 99644-2404
                 </Button>
                 <Button
-                  onClick={() => window.open('https://wa.me/5567996442404', '_blank')}
+                  asChild
                   className="w-full bg-primary hover:bg-primary-dark text-primary-foreground"
                 >
-                  <MessageSquare className="w-4 h-4 mr-2" />
-                  WhatsApp
+                  <Link to="/seja-parceiro">
+                    Seja Nosso Parceiro
+                  </Link>
                 </Button>
               </div>
             </nav>

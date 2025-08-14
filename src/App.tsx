@@ -6,33 +6,20 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
-import About from "./pages/About";
-import Solutions from "./pages/Solutions";
-import Differentials from "./pages/Differentials";
-import Cases from "./pages/Cases";
-import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
-// Solutions Pages
-import ConsultoriaEstrategica from "./pages/solutions/ConsultoriaEstrategica";
-import DesenvolvimentoCultura from "./pages/solutions/DesenvolvimentoCultura";
-import TreinamentosCapacitacao from "./pages/solutions/TreinamentosCapacitacao";
-import GestaoPessoas from "./pages/solutions/GestaoPessoas";
+// New Pages
+import QuemSomos from "./pages/QuemSomos";
+import Parceiros from "./pages/Parceiros";
+import Artigos from "./pages/Artigos";
+import SejaParceiroForm from "./pages/SejaParceiroForm";
 
-// Segments Pages
-import Agronegocio from "./pages/segments/Agronegocio";
-import AlimentosBebidas from "./pages/segments/AlimentosBebidas";
-import Energia from "./pages/segments/Energia";
-import Financeiro from "./pages/segments/Financeiro";
-import VarejoFarma from "./pages/segments/VarejoFarma";
-import Educacao from "./pages/segments/Educacao";
-
-// About Pages
-import QuemSomos from "./pages/about/QuemSomos";
-import NossaExpertise from "./pages/about/NossaExpertise";
-import TrabalheConosco from "./pages/about/TrabalheConosco";
-import FaleConosco from "./pages/about/FaleConosco";
+// Services Pages
+import MapeamentoEstrategico from "./pages/services/MapeamentoEstrategico";
+import DesenvolvimentoPessoal from "./pages/services/DesenvolvimentoPessoal";
+import MentoriasConsultorias from "./pages/services/MentoriasConsultorias";
+import PalestrasWorkshops from "./pages/services/PalestrasWorkshops";
 
 const queryClient = new QueryClient();
 
@@ -46,32 +33,17 @@ const App = () => (
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/sobre" element={<About />} />
-            <Route path="/solucoes" element={<Solutions />} />
-            <Route path="/diferenciais" element={<Differentials />} />
-            <Route path="/cases" element={<Cases />} />
-            <Route path="/blog" element={<Blog />} />
+            <Route path="/quem-somos" element={<QuemSomos />} />
+            <Route path="/parceiros" element={<Parceiros />} />
+            <Route path="/artigos" element={<Artigos />} />
             <Route path="/contato" element={<Contact />} />
+            <Route path="/seja-parceiro" element={<SejaParceiroForm />} />
             
-            {/* Solutions Routes */}
-            <Route path="/solucoes/consultoria-estrategica" element={<ConsultoriaEstrategica />} />
-            <Route path="/solucoes/desenvolvimento-cultura" element={<DesenvolvimentoCultura />} />
-            <Route path="/solucoes/treinamentos-capacitacao" element={<TreinamentosCapacitacao />} />
-            <Route path="/solucoes/gestao-pessoas" element={<GestaoPessoas />} />
-            
-            {/* Segments Routes */}
-            <Route path="/segmentos/agronegocio" element={<Agronegocio />} />
-            <Route path="/segmentos/alimentos-bebidas" element={<AlimentosBebidas />} />
-            <Route path="/segmentos/energia" element={<Energia />} />
-            <Route path="/segmentos/financeiro" element={<Financeiro />} />
-            <Route path="/segmentos/varejo-farma" element={<VarejoFarma />} />
-            <Route path="/segmentos/educacao" element={<Educacao />} />
-            
-            {/* About Routes */}
-            <Route path="/sobre/quem-somos" element={<QuemSomos />} />
-            <Route path="/sobre/nossa-expertise" element={<NossaExpertise />} />
-            <Route path="/sobre/trabalhe-conosco" element={<TrabalheConosco />} />
-            <Route path="/sobre/fale-conosco" element={<FaleConosco />} />
+            {/* Services Routes */}
+            <Route path="/servicos/mapeamento-estrategico" element={<MapeamentoEstrategico />} />
+            <Route path="/servicos/desenvolvimento-pessoal" element={<DesenvolvimentoPessoal />} />
+            <Route path="/servicos/mentorias-consultorias" element={<MentoriasConsultorias />} />
+            <Route path="/servicos/palestras-workshops" element={<PalestrasWorkshops />} />
             
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
