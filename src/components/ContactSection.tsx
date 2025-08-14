@@ -124,10 +124,16 @@ const ContactSection = () => {
   }
 
   return (
-    <section id="contato" className="py-20 bg-background">
-      <div className="container mx-auto px-4 sm:px-6">
-        {/* Header */}
-        <div className="text-center mb-16 animate-fade-in">
+      <section id="contato" className="relative py-20 bg-gradient-to-r from-black/80 to-black/60 overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(/src/assets/contato-hero.jpg)` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50" />
+        <div className="relative">
+        <div className="container mx-auto px-4 sm:px-6">
+          {/* Header */}
+          <div className="text-center mb-16 animate-fade-in text-white">
           <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full text-primary text-sm font-medium mb-6">
             Entre em Contato
           </div>
@@ -385,6 +391,7 @@ const ContactSection = () => {
               </div>
             </div>
           </Card>
+        </div>
         </div>
       </div>
     </section>

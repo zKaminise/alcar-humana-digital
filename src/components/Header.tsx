@@ -63,11 +63,13 @@ const Header = () => {
           <div className="flex-shrink-0">
             <Link 
               to="/"
-              className={`text-2xl font-bold transition-colors drop-shadow-lg ${
-                isScrolled ? 'text-primary hover:text-primary-light' : 'text-white hover:text-white/80'
-              }`}
+              className="transition-all duration-300 hover:scale-105"
             >
-              Alçar Humà
+              <img 
+                src="/lovable-uploads/7b262c46-4d6f-40ad-aa6b-f7c64b50a1e6.png" 
+                alt="Alçar Humà - Gestão e Pessoas" 
+                className="h-12 w-auto"
+              />
             </Link>
           </div>
 
