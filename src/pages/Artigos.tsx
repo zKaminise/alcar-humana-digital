@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -6,6 +6,11 @@ import { Input } from '@/components/ui/input';
 import { Calendar, User, Search, BookOpen, TrendingUp } from 'lucide-react';
 
 const Artigos = () => {
+  const [selectedCategory, setSelectedCategory] = useState("Todos");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const articlesPerPage = 6;
+
   const articles = [
     {
       id: 1,
@@ -71,6 +76,46 @@ const Artigos = () => {
 
   const categories = ["Todos", "Gestão de Pessoas", "Liderança", "Cultura", "Estratégia", "Desenvolvimento", "Motivação"];
 
+  // Filter articles based on category and search term
+  const filteredArticles = useMemo(() => {
+    let filtered = articles;
+    
+    // Filter by category
+    if (selectedCategory !== "Todos") {
+      filtered = filtered.filter(article => article.category === selectedCategory);
+    }
+    
+    // Filter by search term
+    if (searchTerm) {
+      filtered = filtered.filter(article => 
+        article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        article.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        article.author.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+    
+    return filtered;
+  }, [selectedCategory, searchTerm, articles]);
+
+  // Calculate pagination
+  const totalPages = Math.ceil(filteredArticles.length / articlesPerPage);
+  const startIndex = (currentPage - 1) * articlesPerPage;
+  const paginatedArticles = filteredArticles.slice(startIndex, startIndex + articlesPerPage);
+
+  const handleCategoryChange = (category: string) => {
+    setSelectedCategory(category);
+    setCurrentPage(1); // Reset to first page when changing category
+  };
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+    setCurrentPage(1); // Reset to first page when searching
+  };
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
@@ -102,8 +147,9 @@ const Artigos = () => {
               {categories.map((category) => (
                 <Badge 
                   key={category}
-                  variant={category === "Todos" ? "default" : "secondary"}
+                  variant={category === selectedCategory ? "default" : "secondary"}
                   className="cursor-pointer hover:bg-primary hover:text-primary-foreground transition-colors"
+                  onClick={() => handleCategoryChange(category)}
                 >
                   {category}
                 </Badge>
@@ -114,6 +160,8 @@ const Artigos = () => {
               <Input 
                 placeholder="Buscar artigos..."
                 className="pl-10"
+                value={searchTerm}
+                onChange={handleSearchChange}
               />
             </div>
           </div>
@@ -123,8 +171,8 @@ const Artigos = () => {
       {/* Lista de Artigos */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-8">
-            {articles.map((article) => (
+          <div className="grid lg:grid-cols-3 gap-8">
+            {paginatedArticles.map((article) => (
               <Card key={article.id} className="hover:shadow-lg transition-shadow cursor-pointer">
                 <CardHeader className="p-0">
                   <div className="aspect-video bg-gradient-to-br from-primary/20 to-primary/5 rounded-t-lg flex items-center justify-center">
@@ -166,15 +214,38 @@ const Artigos = () => {
           </div>
 
           {/* Paginação */}
-          <div className="flex justify-center mt-12">
-            <div className="flex gap-2">
-              <Button variant="outline" size="sm">Anterior</Button>
-              <Button variant="default" size="sm">1</Button>
-              <Button variant="outline" size="sm">2</Button>
-              <Button variant="outline" size="sm">3</Button>
-              <Button variant="outline" size="sm">Próximo</Button>
+          {totalPages > 1 && (
+            <div className="flex justify-center mt-12">
+              <div className="flex gap-2">
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  onClick={() => handlePageChange(currentPage - 1)}
+                  disabled={currentPage === 1}
+                >
+                  Anterior
+                </Button>
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                  <Button
+                    key={page}
+                    variant={currentPage === page ? "default" : "outline"}
+                    size="sm"
+                    onClick={() => handlePageChange(page)}
+                  >
+                    {page}
+                  </Button>
+                ))}
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  onClick={() => handlePageChange(currentPage + 1)}
+                  disabled={currentPage === totalPages}
+                >
+                  Próximo
+                </Button>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </section>
 
