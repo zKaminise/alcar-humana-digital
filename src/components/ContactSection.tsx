@@ -137,11 +137,11 @@ const ContactSection = () => {
         <div className="container mx-auto px-4 sm:px-6">
           {/* Header */}
           <div className="text-center mb-16 animate-fade-in text-white">
-          <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full text-primary text-sm font-medium mb-6">
+          <div className="inline-flex items-center px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-medium mb-6 border border-white/30">
             Entre em Contato
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Vamos <span className="text-primary">Revolucionar</span> sua 
+            Vamos <span className="text-white">Revolucionar</span> sua 
             <span className="text-secondary"> Empresa</span> Juntos
           </h2>
           <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
