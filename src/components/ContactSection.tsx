@@ -372,24 +372,40 @@ const ContactSection = () => {
           </div>
         </div>
 
-        {/* Map Integration Placeholder */}
+        {/* Google Maps Integration */}
         <div className="mt-16">
           <Card className="overflow-hidden shadow-card border-border">
-            <div className="aspect-[16/9] bg-gradient-to-br from-neutral to-muted flex items-center justify-center">
-              <div className="text-center">
-                <MapPin className="w-16 h-16 text-primary mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-foreground mb-2">
-                  Nossa Localização
-                </h3>
-                <p className="text-muted-foreground">
-                  Avenida Afonso Pena, 5723 - Campo Grande, MS
-                </p>
+            <div className="p-6">
+              <div className="flex items-center mb-4">
+                <MapPin className="w-8 h-8 text-primary mr-3" />
+                <div>
+                  <h3 className="text-xl font-semibold text-foreground">
+                    Nossa Localização
+                  </h3>
+                  <p className="text-muted-foreground">
+                    Avenida Afonso Pena, 5723 - Campo Grande, MS
+                  </p>
+                </div>
+              </div>
+              <div className="aspect-[16/9] rounded-lg overflow-hidden">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.4744444444444!2d-54.618611!3d-20.471944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9486e7fffffff!2sAv.+Afonso+Pena%2C+5723+-+Santa+F%C3%A9%2C+Campo+Grande+-+MS!5e0!3m2!1spt-BR!2sbr!4v1"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
+              <div className="mt-4 flex justify-center">
                 <Button
                   variant="outline"
-                  className="mt-4 border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                  className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
                   onClick={() => window.open('https://maps.google.com/?q=Avenida+Afonso+Pena+5723+Campo+Grande+MS', '_blank')}
                 >
-                  Ver no Google Maps
+                  <MapPin className="w-4 h-4 mr-2" />
+                  Abrir no Google Maps
                 </Button>
               </div>
             </div>
