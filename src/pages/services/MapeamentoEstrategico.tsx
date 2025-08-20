@@ -2,39 +2,68 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Target, CheckCircle, Users, TrendingUp, Map, Lightbulb } from 'lucide-react';
+import { Target, CheckCircle, Users, TrendingUp, Map, Lightbulb, BarChart3, TrendingDown } from 'lucide-react';
 
 const MapeamentoEstrategico = () => {
-  const benefits = [
-    "Clareza na direção estratégica da organização",
-    "Alinhamento entre equipes e objetivos",
-    "Identificação de oportunidades de melhoria",
-    "Otimização de recursos e processos",
-    "Melhoria na tomada de decisões",
-    "Aumento da competitividade no mercado"
+  const principalBenefits = [
+    "Alinhamento estratégico completo da organização",
+    "Identificação de oportunidades e ameaças",
+    "Definição clara de objetivos e metas"
   ];
 
   const process = [
     {
-      icon: Target,
+      number: "01",
       title: "Diagnóstico Organizacional",
-      description: "Análise completa da situação atual da empresa, identificando pontos fortes e oportunidades."
+      description: "Análise completa da situação atual da empresa, identificando pontos fortes, fracos, oportunidades e ameaças."
     },
     {
-      icon: Map,
+      number: "02",
+      title: "Definição de Objetivos", 
+      description: "Estabelecimento de objetivos estratégicos claros, mensuráveis e alinhados com a visão da empresa."
+    },
+    {
+      number: "03",
       title: "Mapeamento de Processos",
-      description: "Identificação e documentação dos principais processos organizacionais."
+      description: "Identificação e otimização dos principais processos organizacionais para atingir os objetivos definidos."
     },
     {
-      icon: Lightbulb,
-      title: "Definição Estratégica",
-      description: "Estabelecimento de objetivos claros e estratégias para alcançá-los."
+      number: "04",
+      title: "Implementação e Monitoramento",
+      description: "Execução do plano estratégico com acompanhamento contínuo e ajustes quando necessário."
+    }
+  ];
+
+  const services = [
+    {
+      icon: Target,
+      title: "Planejamento Estratégico",
+      description: "Desenvolvimento de estratégias customizadas para cada organização"
+    },
+    {
+      icon: BarChart3,
+      title: "Análise de Performance", 
+      description: "Criação de indicadores e métricas para acompanhamento de resultados"
+    },
+    {
+      icon: Users,
+      title: "Alinhamento de Equipes",
+      description: "Engajamento de todos os níveis organizacionais no processo estratégico"
     },
     {
       icon: TrendingUp,
-      title: "Plano de Implementação",
-      description: "Criação de um roteiro detalhado para execução das estratégias definidas."
+      title: "Crescimento Sustentável",
+      description: "Estratégias focadas em crescimento consistente e duradouro"
     }
+  ];
+
+  const allBenefits = [
+    "Alinhamento estratégico completo da organização",
+    "Identificação de oportunidades e ameaças",
+    "Definição clara de objetivos e metas",
+    "Criação de indicadores de performance (KPIs)",
+    "Roadmap estratégico detalhado",
+    "Acompanhamento e monitoramento contínuo"
   ];
 
   return (
@@ -64,7 +93,7 @@ const MapeamentoEstrategico = () => {
         </div>
       </section>
 
-      {/* Sobre o Serviço */}
+      {/* O que é Mapeamento Estratégico */}
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -72,34 +101,52 @@ const MapeamentoEstrategico = () => {
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
                 O que é Mapeamento Estratégico?
               </h2>
-              <div className="space-y-4 text-muted-foreground">
+              <div className="space-y-4 text-muted-foreground mb-8">
                 <p>
-                  O Mapeamento Estratégico é uma metodologia abrangente que ajuda organizações 
-                  a visualizar, compreender e otimizar seus processos, estratégias e objetivos. 
-                  É uma ferramenta fundamental para alinhar toda a empresa em direção aos mesmos goals.
+                  O Mapeamento Estratégico é um processo estruturado que traduz a missão e visão da sua organização em objetivos específicos, mensuráveis e interconectados. Através desta metodologia, criamos um roteiro claro que alinha toda a empresa em direção aos mesmos resultados.
                 </p>
                 <p>
-                  Nossa abordagem combina análise técnica profunda com insights práticos, 
-                  garantindo que cada estratégia seja não apenas viável, mas também sustentável 
-                  e orientada para resultados concretos.
+                  Nossa abordagem combina as melhores práticas do mercado com uma análise profunda da realidade da sua empresa, garantindo que o planejamento seja não apenas ambicioso, mas também viável e adaptado à sua cultura organizacional.
                 </p>
-                <p>
-                  Através deste processo, sua organização ganha clareza sobre onde está, 
-                  onde quer chegar e qual o melhor caminho para alcançar seus objetivos 
-                  de forma eficiente e eficaz.
-                </p>
+              </div>
+
+              <div className="mb-8">
+                <h3 className="text-xl font-bold text-foreground mb-4">Benefícios Principais:</h3>
+                <div className="space-y-3">
+                  {principalBenefits.map((benefit, index) => (
+                    <div key={index} className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                      <span className="text-muted-foreground">{benefit}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-8">
+                <div className="text-center">
+                  <div className="text-4xl font-bold text-primary mb-2">3-6 meses</div>
+                  <div className="text-sm text-muted-foreground">Duração típica do projeto</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-4xl font-bold text-primary mb-2">100%</div>
+                  <div className="text-sm text-muted-foreground">Customizado para sua empresa</div>
+                </div>
               </div>
             </div>
             <div className="relative">
-              <div className="aspect-square bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl p-8 flex items-center justify-center">
-                <Target className="w-32 h-32 text-primary" />
+              <div className="aspect-[4/3] bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl p-8 flex items-center justify-center">
+                <img 
+                  src="/lovable-uploads/4ed9b06a-4b64-4e1c-b495-4837d042d2a8.png" 
+                  alt="Dashboard estratégico em laptop"
+                  className="w-full h-full object-contain"
+                />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Processo */}
+      {/* Nossa Metodologia */}
       <section className="py-20 bg-muted/50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
@@ -107,62 +154,87 @@ const MapeamentoEstrategico = () => {
               Nossa Metodologia
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Um processo estruturado e comprovado para transformar a estratégia da sua organização
+              Processo estruturado em 4 etapas que garante resultados consistentes e sustentáveis.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {process.map((step, index) => (
-              <Card key={index} className="text-center">
-                <CardContent className="p-8">
-                  <div className="relative mb-6">
-                    <div className="aspect-square w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center">
-                      <step.icon className="w-8 h-8 text-primary" />
+          <div className="max-w-5xl mx-auto">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {process.map((step, index) => (
+                <Card key={index} className="text-center h-full">
+                  <CardContent className="p-8">
+                    <div className="relative mb-6">
+                      <div className="w-16 h-16 mx-auto bg-primary rounded-full flex items-center justify-center text-white text-2xl font-bold">
+                        {step.number}
+                      </div>
                     </div>
-                    <div className="absolute -top-2 -right-2 w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold">
-                      {index + 1}
-                    </div>
-                  </div>
-                  <h3 className="text-xl font-bold mb-4">{step.title}</h3>
-                  <p className="text-muted-foreground">{step.description}</p>
-                </CardContent>
-              </Card>
-            ))}
+                    <h3 className="text-xl font-bold mb-4">{step.title}</h3>
+                    <p className="text-muted-foreground">{step.description}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Benefícios */}
+      {/* O que Oferecemos */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="relative">
-              <div className="aspect-square bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl p-8 flex items-center justify-center">
-                <TrendingUp className="w-32 h-32 text-primary" />
-              </div>
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              O que Oferecemos
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Serviços completos que cobrem todos os aspectos do planejamento estratégico organizacional.
+            </p>
+          </div>
+
+          <div className="max-w-5xl mx-auto">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {services.map((service, index) => (
+                <Card key={index} className="text-center h-full">
+                  <CardContent className="p-8">
+                    <div className="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                      <service.icon className="w-8 h-8 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-bold mb-4">{service.title}</h3>
+                    <p className="text-muted-foreground">{service.description}</p>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-                Benefícios do Mapeamento
-              </h2>
-              <p className="text-muted-foreground mb-8">
-                O Mapeamento Estratégico traz resultados tangíveis e duradouros para sua organização:
-              </p>
-              <div className="space-y-4">
-                {benefits.map((benefit, index) => (
-                  <div key={index} className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                    <span className="text-muted-foreground">{benefit}</span>
-                  </div>
-                ))}
-              </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Todos os Benefícios */}
+      <section className="py-20 bg-muted/50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Todos os Benefícios
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Resultados comprovados que transformam organizações.
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-8">
+              {allBenefits.map((benefit, index) => (
+                <div key={index} className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                  <span className="text-lg text-muted-foreground">{benefit}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* Público-Alvo */}
-      <section className="py-20 bg-muted/50">
+      <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
@@ -173,39 +245,41 @@ const MapeamentoEstrategico = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <Card>
-              <CardContent className="p-8 text-center">
-                <Users className="w-12 h-12 text-primary mx-auto mb-4" />
-                <h3 className="text-xl font-bold mb-4">Empresas em Crescimento</h3>
-                <p className="text-muted-foreground">
-                  Organizações que precisam estruturar seus processos e estratégias 
-                  para sustentar o crescimento.
-                </p>
-              </CardContent>
-            </Card>
+          <div className="max-w-5xl mx-auto">
+            <div className="grid md:grid-cols-3 gap-8">
+              <Card>
+                <CardContent className="p-8 text-center">
+                  <Users className="w-12 h-12 text-primary mx-auto mb-4" />
+                  <h3 className="text-xl font-bold mb-4">Empresas em Crescimento</h3>
+                  <p className="text-muted-foreground">
+                    Organizações que precisam estruturar seus processos e estratégias 
+                    para sustentar o crescimento.
+                  </p>
+                </CardContent>
+              </Card>
 
-            <Card>
-              <CardContent className="p-8 text-center">
-                <Target className="w-12 h-12 text-primary mx-auto mb-4" />
-                <h3 className="text-xl font-bold mb-4">Empresas em Transição</h3>
-                <p className="text-muted-foreground">
-                  Companhias passando por mudanças significativas que precisam 
-                  realinhar sua estratégia.
-                </p>
-              </CardContent>
-            </Card>
+              <Card>
+                <CardContent className="p-8 text-center">
+                  <Target className="w-12 h-12 text-primary mx-auto mb-4" />
+                  <h3 className="text-xl font-bold mb-4">Empresas em Transição</h3>
+                  <p className="text-muted-foreground">
+                    Companhias passando por mudanças significativas que precisam 
+                    realinhar sua estratégia.
+                  </p>
+                </CardContent>
+              </Card>
 
-            <Card>
-              <CardContent className="p-8 text-center">
-                <TrendingUp className="w-12 h-12 text-primary mx-auto mb-4" />
-                <h3 className="text-xl font-bold mb-4">Lideranças Visionárias</h3>
-                <p className="text-muted-foreground">
-                  Líderes que buscam ferramentas para tomar decisões mais 
-                  assertivas e estratégicas.
-                </p>
-              </CardContent>
-            </Card>
+              <Card>
+                <CardContent className="p-8 text-center">
+                  <TrendingUp className="w-12 h-12 text-primary mx-auto mb-4" />
+                  <h3 className="text-xl font-bold mb-4">Lideranças Visionárias</h3>
+                  <p className="text-muted-foreground">
+                    Líderes que buscam ferramentas para tomar decisões mais 
+                    assertivas e estratégicas.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </section>
