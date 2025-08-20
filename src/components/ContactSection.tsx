@@ -140,11 +140,11 @@ const ContactSection = () => {
           <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full text-primary text-sm font-medium mb-6">
             Entre em Contato
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Vamos <span className="text-primary">Revolucionar</span> sua 
             <span className="text-secondary"> Empresa</span> Juntos
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
             Conecte-se conosco para desenvolver estratégias inovadoras e soluções sob medida 
             que impulsionarão o crescimento e a excelência da sua organização.
           </p>
