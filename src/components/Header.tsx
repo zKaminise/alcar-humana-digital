@@ -60,10 +60,10 @@ const Header = () => {
       <div className="container mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <div className="flex-shrink-0 animate-fade-in">
+          <div className="flex-shrink-0">
             <Link 
               to="/"
-              className="transition-all duration-300 hover:scale-105 btn-hover"
+              className="transition-all duration-300 hover:scale-105"
             >
               <img 
                 src="/lovable-uploads/7b262c46-4d6f-40ad-aa6b-f7c64b50a1e6.png" 
@@ -74,10 +74,10 @@ const Header = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8 animate-slide-up animate-stagger-1">
+          <nav className="hidden lg:flex items-center space-x-8">
             <Link
               to="/quem-somos"
-              className={`transition-all duration-300 font-medium relative group drop-shadow-md btn-hover ${
+              className={`transition-colors font-medium relative group drop-shadow-md ${
                 isScrolled 
                   ? `text-foreground hover:text-primary ${location.pathname === '/quem-somos' ? 'text-primary' : ''}`
                   : `text-white hover:text-white/80 ${location.pathname === '/quem-somos' ? 'text-white' : ''}`
@@ -94,29 +94,29 @@ const Header = () => {
               onMouseLeave={handleDropdownLeave}
             >
               <button
-                className={`flex items-center transition-all duration-300 font-medium relative group drop-shadow-md btn-hover ${
+                className={`flex items-center transition-colors font-medium relative group drop-shadow-md ${
                   isScrolled 
                     ? `text-foreground hover:text-primary ${location.pathname.startsWith('/servicos') ? 'text-primary' : ''}`
                     : `text-white hover:text-white/80 ${location.pathname.startsWith('/servicos') ? 'text-white' : ''}`
                 }`}
               >
                 Serviços
-                <ChevronDown className="w-4 h-4 ml-1 transition-transform duration-300 group-hover:rotate-180" />
+                <ChevronDown className="w-4 h-4 ml-1" />
                 <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
               </button>
               
               {activeDropdown === 'servicos' && (
                 <div 
-                  className="absolute top-full left-0 mt-1 w-80 bg-card rounded-lg shadow-elegant border border-border p-6 animate-scale-in z-50"
+                  className="absolute top-full left-0 mt-1 w-80 bg-card rounded-lg shadow-elegant border border-border p-6 animate-fade-in z-50"
                   onMouseEnter={() => handleDropdownEnter('servicos')}
                   onMouseLeave={handleDropdownLeave}
                 >
                   <div className="space-y-3">
-                    {servicosMenu.map((item, index) => (
+                    {servicosMenu.map((item) => (
                       <Link
                         key={item.label}
                         to={item.href}
-                        className={`block p-3 rounded-lg hover:bg-muted transition-all duration-300 card-hover animate-fade-in animate-stagger-${index + 1}`}
+                        className="block p-3 rounded-lg hover:bg-muted transition-colors"
                         onClick={closeDropdowns}
                       >
                         <div className="font-medium text-foreground">{item.label}</div>
@@ -130,7 +130,7 @@ const Header = () => {
 
             <Link
               to="/parceiros"
-              className={`transition-all duration-300 font-medium relative group drop-shadow-md btn-hover ${
+              className={`transition-colors font-medium relative group drop-shadow-md ${
                 isScrolled 
                   ? `text-foreground hover:text-primary ${location.pathname === '/parceiros' ? 'text-primary' : ''}`
                   : `text-white hover:text-white/80 ${location.pathname === '/parceiros' ? 'text-white' : ''}`
@@ -142,7 +142,7 @@ const Header = () => {
 
             <Link
               to="/artigos"
-              className={`transition-all duration-300 font-medium relative group drop-shadow-md btn-hover ${
+              className={`transition-colors font-medium relative group drop-shadow-md ${
                 isScrolled 
                   ? `text-foreground hover:text-primary ${location.pathname === '/artigos' ? 'text-primary' : ''}`
                   : `text-white hover:text-white/80 ${location.pathname === '/artigos' ? 'text-white' : ''}`
@@ -154,7 +154,7 @@ const Header = () => {
             
             <Link
               to="/contato"
-              className={`transition-all duration-300 font-medium relative group drop-shadow-md btn-hover ${
+              className={`transition-colors font-medium relative group drop-shadow-md ${
                 isScrolled 
                   ? `text-foreground hover:text-primary ${location.pathname === '/contato' ? 'text-primary' : ''}`
                   : `text-white hover:text-white/80 ${location.pathname === '/contato' ? 'text-white' : ''}`
@@ -166,19 +166,19 @@ const Header = () => {
           </nav>
 
           {/* CTA Buttons - Desktop */}
-          <div className="hidden lg:flex items-center space-x-4 animate-slide-right animate-stagger-2">
+          <div className="hidden lg:flex items-center space-x-4">
             <Button
               variant="outline"
               size="sm"
               onClick={() => window.open('tel:+5567996442404', '_self')}
-              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground btn-hover"
+              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
             >
               <Phone className="w-4 h-4 mr-2" />
               (67) 99644-2404
             </Button>
             <Button
               asChild
-              className="bg-primary hover:bg-primary-dark text-primary-foreground btn-hover btn-primary-animated"
+              className="bg-primary hover:bg-primary-dark text-primary-foreground"
             >
               <Link to="/seja-parceiro">
                 Seja Nosso Parceiro
@@ -197,25 +197,25 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="lg:hidden bg-background border-t border-border animate-slide-up">
+          <div className="lg:hidden bg-background border-t border-border">
             <nav className="py-4 space-y-2">
               <Link
                 to="/quem-somos"
-                className="block w-full text-left px-4 py-3 text-foreground hover:text-primary hover:bg-muted transition-all duration-300 animate-fade-in animate-stagger-1"
+                className="block w-full text-left px-4 py-3 text-foreground hover:text-primary hover:bg-muted transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Quem Somos
               </Link>
 
               {/* Serviços - Mobile */}
-              <div className="px-4 py-2 animate-fade-in animate-stagger-2">
+              <div className="px-4 py-2">
                 <div className="font-medium text-foreground mb-2">Serviços</div>
                 <div className="pl-4 space-y-1">
-                  {servicosMenu.map((item, index) => (
+                  {servicosMenu.map((item) => (
                     <Link
                       key={item.label}
                       to={item.href}
-                      className={`block py-2 text-sm text-muted-foreground hover:text-primary hover:bg-muted rounded px-2 transition-all duration-300 animate-fade-in animate-stagger-${Math.min(index + 3, 4)}`}
+                      className="block py-2 text-sm text-muted-foreground hover:text-primary hover:bg-muted rounded px-2 transition-colors"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       {item.label}
@@ -226,7 +226,7 @@ const Header = () => {
 
               <Link
                 to="/parceiros"
-                className="block w-full text-left px-4 py-3 text-foreground hover:text-primary hover:bg-muted transition-all duration-300 animate-fade-in animate-stagger-3"
+                className="block w-full text-left px-4 py-3 text-foreground hover:text-primary hover:bg-muted transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Parceiros
@@ -234,7 +234,7 @@ const Header = () => {
 
               <Link
                 to="/artigos"
-                className="block w-full text-left px-4 py-3 text-foreground hover:text-primary hover:bg-muted transition-all duration-300 animate-fade-in animate-stagger-4"
+                className="block w-full text-left px-4 py-3 text-foreground hover:text-primary hover:bg-muted transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Artigos
@@ -242,25 +242,25 @@ const Header = () => {
 
               <Link
                 to="/contato"
-                className="block w-full text-left px-4 py-3 text-foreground hover:text-primary hover:bg-muted transition-all duration-300 animate-fade-in animate-stagger-4"
+                className="block w-full text-left px-4 py-3 text-foreground hover:text-primary hover:bg-muted transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Contato
               </Link>
 
-              <div className="px-4 pt-4 space-y-3 border-t border-border animate-scale-in animate-stagger-4">
+              <div className="px-4 pt-4 space-y-3 border-t border-border">
                 <Button
                   variant="outline"
                   size="sm"
                   onClick={() => window.open('tel:+5567996442404', '_self')}
-                  className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground btn-hover"
+                  className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground"
                 >
                   <Phone className="w-4 h-4 mr-2" />
                   (67) 99644-2404
                 </Button>
                 <Button
                   asChild
-                  className="w-full bg-primary hover:bg-primary-dark text-primary-foreground btn-hover btn-primary-animated"
+                  className="w-full bg-primary hover:bg-primary-dark text-primary-foreground"
                 >
                   <Link to="/seja-parceiro">
                     Seja Nosso Parceiro

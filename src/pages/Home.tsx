@@ -97,14 +97,14 @@ const Home = () => {
       {/* Services Overview */}
       <section className="py-20 bg-neutral-light">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="text-center mb-16 animate-fade-in">
-            <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full text-primary text-sm font-medium mb-6 animate-bounce-in">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full text-primary text-sm font-medium mb-6">
               Nossas Especialidades
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 animate-slide-up">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               Soluções que <span className="text-primary">Transformam</span> Organizações
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto animate-fade-in animate-stagger-1">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Oferecemos um portfólio completo de soluções estratégicas para impulsionar 
               o crescimento e a performance da sua empresa.
             </p>
@@ -112,7 +112,7 @@ const Home = () => {
 
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             {services.map((service, index) => (
-              <Card key={index} className={`shadow-card border-border card-hover animate-scale-in animate-stagger-${index + 1}`}>
+              <Card key={index} className="shadow-card border-border hover:shadow-elegant transition-all duration-300 group">
                 <CardContent className="p-8">
                   <div className="text-center">
                     <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:bg-primary group-hover:text-primary-foreground transition-all">
@@ -134,8 +134,8 @@ const Home = () => {
             ))}
           </div>
 
-          <div className="text-center animate-fade-in animate-stagger-4">
-            <Button size="lg" asChild className="bg-primary hover:bg-primary-dark text-primary-foreground btn-hover btn-primary-animated">
+          <div className="text-center">
+            <Button size="lg" asChild className="bg-primary hover:bg-primary-dark text-primary-foreground">
               <Link to="/solucoes">
                 Ver Todas as Soluções
                 <ArrowRight className="w-5 h-5 ml-2" />
@@ -148,8 +148,8 @@ const Home = () => {
       {/* Stats Section */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 animate-slide-up">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               Números que <span className="text-primary">Comprovam</span> nossa Excelência
             </h2>
           </div>
@@ -158,7 +158,7 @@ const Home = () => {
             {stats.map((stat, index) => {
               const IconComponent = stat.icon;
               return (
-                <Card key={index} className={`text-center shadow-card border-border card-hover animate-scale-in animate-stagger-${index + 1}`}>
+                <Card key={index} className="text-center shadow-card border-border">
                   <CardContent className="p-8">
                     <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                       <IconComponent className="w-8 h-8 text-primary" />
@@ -176,8 +176,8 @@ const Home = () => {
       {/* Highlights Grid */}
       <section className="py-20 bg-neutral-light">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 animate-slide-up">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               Por que Escolher a <span className="text-primary">Alçar Humà</span>?
             </h2>
           </div>
@@ -186,14 +186,14 @@ const Home = () => {
             {highlights.map((highlight, index) => {
               const IconComponent = highlight.icon;
               return (
-                <Card key={index} className={`shadow-card border-border card-hover animate-slide-${index % 2 === 0 ? 'left' : 'right'} animate-stagger-${index + 1}`}>
+                <Card key={index} className="shadow-card border-border hover:shadow-elegant transition-all duration-300 group">
                   <CardContent className="p-6">
                     <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-all">
                       <IconComponent className="w-6 h-6 text-primary group-hover:text-primary-foreground" />
                     </div>
                     <h3 className="text-lg font-bold text-foreground mb-3">{highlight.title}</h3>
                     <p className="text-muted-foreground text-sm mb-4">{highlight.description}</p>
-                    <Button variant="ghost" size="sm" asChild className="text-primary hover:text-primary-foreground hover:bg-primary p-0 h-auto font-semibold btn-hover">
+                    <Button variant="ghost" size="sm" asChild className="text-primary hover:text-primary-foreground hover:bg-primary p-0 h-auto font-semibold">
                       <Link to={highlight.link}>
                         Saiba Mais
                         <ArrowRight className="w-4 h-4 ml-1" />
@@ -211,14 +211,14 @@ const Home = () => {
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="animate-slide-left">
-              <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full text-primary text-sm font-medium mb-6 animate-bounce-in">
+            <div>
+              <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full text-primary text-sm font-medium mb-6">
                 Nossos Diferenciais
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 animate-fade-in">
+              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
                 O que nos torna <span className="text-primary">Únicos</span>
               </h2>
-              <p className="text-xl text-muted-foreground mb-8 animate-fade-in animate-stagger-1">
+              <p className="text-xl text-muted-foreground mb-8">
                 Combinamos experiência, metodologia própria e foco em resultados 
                 para entregar soluções que realmente transformam organizações.
               </p>
@@ -227,7 +227,7 @@ const Home = () => {
                 {differentials.map((diff, index) => {
                   const IconComponent = diff.icon;
                   return (
-                    <div key={index} className={`flex items-start space-x-4 animate-fade-in animate-stagger-${index + 2}`}>
+                    <div key={index} className="flex items-start space-x-4">
                       <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
                         <IconComponent className="w-6 h-6 text-primary" />
                       </div>
@@ -240,7 +240,7 @@ const Home = () => {
                 })}
               </div>
 
-              <Button size="lg" asChild className="bg-primary hover:bg-primary-dark text-primary-foreground btn-hover btn-primary-animated">
+              <Button size="lg" asChild className="bg-primary hover:bg-primary-dark text-primary-foreground">
                 <Link to="/diferenciais">
                   Conheça Nossa Metodologia
                   <ArrowRight className="w-5 h-5 ml-2" />
@@ -248,8 +248,8 @@ const Home = () => {
               </Button>
             </div>
 
-            <div className="relative animate-slide-right">
-              <div className="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl p-8 aspect-square flex items-center justify-center animate-scale-in">
+            <div className="relative">
+              <div className="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl p-8 aspect-square flex items-center justify-center">
                 <div className="text-center">
                   <div className="w-32 h-32 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-6">
                     <Award className="w-16 h-16 text-primary" />
@@ -265,16 +265,16 @@ const Home = () => {
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-primary to-secondary">
-        <div className="container mx-auto px-4 sm:px-6 text-center animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 animate-bounce-in">
+        <div className="container mx-auto px-4 sm:px-6 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Pronto para Transformar sua Organização?
           </h2>
-          <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto animate-slide-up animate-stagger-1">
+          <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
             Descubra como nossas soluções estratégicas podem impulsionar 
             o crescimento e a performance da sua empresa.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-scale-in animate-stagger-2">
-            <Button size="lg" asChild className="bg-white text-primary hover:bg-neutral-light btn-hover">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" asChild className="bg-white text-primary hover:bg-neutral-light">
               <Link to="/contato">
                 Solicitar Proposta
                 <ArrowRight className="w-5 h-5 ml-2" />
@@ -284,7 +284,7 @@ const Home = () => {
               variant="outline" 
               size="lg" 
               asChild
-              className="border-white text-white hover:bg-white hover:text-primary btn-hover"
+              className="border-white text-white hover:bg-white hover:text-primary"
             >
               <Link to="/cases">
                 Ver Cases de Sucesso
