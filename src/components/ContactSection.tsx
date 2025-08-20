@@ -126,8 +126,11 @@ const ContactSection = () => {
   return (
       <section id="contato" className="relative py-20 bg-gradient-to-r from-black/80 to-black/60 overflow-hidden">
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(/src/assets/contato-hero.jpg)` }}
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed"
+          style={{ 
+            backgroundImage: `url(/src/assets/contato-hero.jpg)`,
+            backgroundAttachment: 'fixed'
+          }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50" />
         <div className="relative">
@@ -138,12 +141,12 @@ const ContactSection = () => {
             Entre em Contato
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Vamos <span className="text-primary">Transformar</span> sua 
-            <span className="text-secondary"> Organização</span> Juntos
+            Vamos <span className="text-primary">Revolucionar</span> sua 
+            <span className="text-secondary"> Empresa</span> Juntos
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Estamos prontos para desenvolver soluções personalizadas que atendam 
-            às necessidades específicas da sua empresa. Entre em contato conosco.
+            Conecte-se conosco para desenvolver estratégias inovadoras e soluções sob medida 
+            que impulsionarão o crescimento e a excelência da sua organização.
           </p>
         </div>
 
