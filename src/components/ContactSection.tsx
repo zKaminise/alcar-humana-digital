@@ -129,7 +129,8 @@ const ContactSection = () => {
           className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed"
           style={{ 
             backgroundImage: `url(/src/assets/contato-hero.jpg)`,
-            backgroundAttachment: 'fixed'
+            backgroundAttachment: 'fixed',
+            transform: 'translate3d(0, 0, 0)'
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50" />

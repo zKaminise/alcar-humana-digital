@@ -29,18 +29,25 @@ const QuemSomos = () => {
   return (
     <div className="min-h-screen bg-background pt-20">
       {/* Hero Section */}
-      <div className="bg-gradient-to-br from-primary/10 via-background to-secondary/10 py-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Quem <span className="text-primary">Somos</span>
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Conheça a história, missão e valores da Alçar Humà
-            </p>
+      <section className="relative pt-32 pb-20 bg-gradient-to-r from-black/80 to-black/60 overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(/src/assets/quem-somos-hero.jpg)` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50" />
+        <div className="relative text-white">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto text-center">
+              <h1 className="text-4xl md:text-6xl font-bold mb-6">
+                Quem <span className="text-white">Somos</span>
+              </h1>
+              <p className="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto">
+                Conheça a história, missão e valores da Alçar Humà
+              </p>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
       <div className="container mx-auto px-4 py-16">
         <div className="grid lg:grid-cols-2 gap-16 items-center mb-16">
