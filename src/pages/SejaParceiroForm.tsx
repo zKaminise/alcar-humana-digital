@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from "react";
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -8,6 +8,51 @@ import { Handshake, Mail, Phone, MapPin, Building, Users, Target, Award, ArrowRi
 import parceirosBanner from '@/assets/parceiros-banner.jpg';
 
 const SejaParceiroForm = () => {
+  const [f, setF] = useState({
+    empresa: "",
+    setor: "",
+    contato_nome: "",
+    cargo: "",
+    email: "",
+    telefone: "",
+    tipo_parceria: "",
+    descricao_proposta: "",
+    experiencia: "",
+    hp: "",                   // honeypot
+    source: "seja-parceiro",  // identifica o formulário
+  });
+  const [sending, setSending] = useState(false);
+
+  const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    const key = id ? id.replace(/-/g, "_") : "";
+    if (!key) return;
+    setF((p) => ({ ...p, [key]: value }));
+  };
+
+  const onSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (sending) return;
+    setSending(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(f),
+      });
+      if (!res.ok) throw new Error();
+      alert("Proposta de parceria enviada!");
+      setF({
+        empresa: "", setor: "", contato_nome: "", cargo: "", email: "", telefone: "",
+        tipo_parceria: "", descricao_proposta: "", experiencia: "", hp: "", source: "seja-parceiro",
+      });
+    } catch {
+      alert("Falha ao enviar. Tente novamente.");
+    } finally {
+      setSending(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
@@ -129,7 +174,7 @@ const SejaParceiroForm = () => {
                         </div>
                         <div>
                           <p className="font-medium text-foreground">E-mail</p>
-                          <p className="text-muted-foreground">parceiros@alcarhuma.com.br</p>
+                          <p className="text-muted-foreground">parceiros@alcarhumana.com.br</p>
                         </div>
                       </div>
                       
@@ -157,14 +202,28 @@ const SejaParceiroForm = () => {
                     </p>
                   </CardHeader>
                   <CardContent className="p-8">
-                    <form className="space-y-8">
+                    <form className="space-y-8" onSubmit={onSubmit}>
+                      {/* honeypot invisível */}
+                      <input
+                        type="text"
+                        value={f.hp}
+                        onChange={(e) => setF((p) => ({ ...p, hp: e.target.value }))}
+                        className="hidden"
+                        tabIndex={-1}
+                        autoComplete="off"
+                      />
+
                       <div className="grid md:grid-cols-2 gap-6">
                         <Card className="p-4 bg-muted/20 border-0">
                           <div className="space-y-2">
-                            <label className="text-sm font-semibold text-foreground">Nome da Empresa *</label>
+                            <label className="text-sm font-semibold text-foreground" htmlFor="empresa">Nome da Empresa *</label>
                             <Input 
+                              id="empresa"
                               placeholder="Digite o nome da sua empresa" 
                               className="border-0 bg-background/80 focus:bg-background"
+                              value={f.empresa}
+                              onChange={onChange}
+                              required
                             />
                           </div>
                         </Card>
@@ -172,7 +231,7 @@ const SejaParceiroForm = () => {
                         <Card className="p-4 bg-muted/20 border-0">
                           <div className="space-y-2">
                             <label className="text-sm font-semibold text-foreground">Setor de Atuação *</label>
-                            <Select>
+                            <Select value={f.setor} onValueChange={(v) => setF((p) => ({ ...p, setor: v }))}>
                               <SelectTrigger className="border-0 bg-background/80 focus:bg-background">
                                 <SelectValue placeholder="Selecione o setor" />
                               </SelectTrigger>
@@ -195,20 +254,28 @@ const SejaParceiroForm = () => {
                       <div className="grid md:grid-cols-2 gap-6">
                         <Card className="p-4 bg-muted/20 border-0">
                           <div className="space-y-2">
-                            <label className="text-sm font-semibold text-foreground">Nome do Contato *</label>
+                            <label className="text-sm font-semibold text-foreground" htmlFor="contato_nome">Nome do Contato *</label>
                             <Input 
+                              id="contato_nome"
                               placeholder="Seu nome completo" 
                               className="border-0 bg-background/80 focus:bg-background"
+                              value={f.contato_nome}
+                              onChange={onChange}
+                              required
                             />
                           </div>
                         </Card>
 
                         <Card className="p-4 bg-muted/20 border-0">
                           <div className="space-y-2">
-                            <label className="text-sm font-semibold text-foreground">Cargo *</label>
+                            <label className="text-sm font-semibold text-foreground" htmlFor="cargo">Cargo *</label>
                             <Input 
+                              id="cargo"
                               placeholder="Seu cargo na empresa" 
                               className="border-0 bg-background/80 focus:bg-background"
+                              value={f.cargo}
+                              onChange={onChange}
+                              required
                             />
                           </div>
                         </Card>
@@ -217,21 +284,29 @@ const SejaParceiroForm = () => {
                       <div className="grid md:grid-cols-2 gap-6">
                         <Card className="p-4 bg-muted/20 border-0">
                           <div className="space-y-2">
-                            <label className="text-sm font-semibold text-foreground">E-mail *</label>
+                            <label className="text-sm font-semibold text-foreground" htmlFor="email">E-mail *</label>
                             <Input 
+                              id="email"
                               type="email" 
                               placeholder="seu@email.com" 
                               className="border-0 bg-background/80 focus:bg-background"
+                              value={f.email}
+                              onChange={onChange}
+                              required
                             />
                           </div>
                         </Card>
 
                         <Card className="p-4 bg-muted/20 border-0">
                           <div className="space-y-2">
-                            <label className="text-sm font-semibold text-foreground">Telefone *</label>
+                            <label className="text-sm font-semibold text-foreground" htmlFor="telefone">Telefone *</label>
                             <Input 
+                              id="telefone"
                               placeholder="(00) 00000-0000" 
                               className="border-0 bg-background/80 focus:bg-background"
+                              value={f.telefone}
+                              onChange={onChange}
+                              required
                             />
                           </div>
                         </Card>
@@ -240,7 +315,7 @@ const SejaParceiroForm = () => {
                       <Card className="p-4 bg-muted/20 border-0">
                         <div className="space-y-2">
                           <label className="text-sm font-semibold text-foreground">Tipo de Parceria</label>
-                          <Select>
+                          <Select value={f.tipo_parceria} onValueChange={(v) => setF((p) => ({ ...p, tipo_parceria: v }))}>
                             <SelectTrigger className="border-0 bg-background/80 focus:bg-background">
                               <SelectValue placeholder="Selecione o tipo de parceria" />
                             </SelectTrigger>
@@ -257,30 +332,37 @@ const SejaParceiroForm = () => {
 
                       <Card className="p-4 bg-muted/20 border-0">
                         <div className="space-y-2">
-                          <label className="text-sm font-semibold text-foreground">Descrição da Proposta *</label>
+                          <label className="text-sm font-semibold text-foreground" htmlFor="descricao_proposta">Descrição da Proposta *</label>
                           <Textarea 
+                            id="descricao_proposta"
                             placeholder="Descreva como nossa parceria pode gerar valor mútuo, suas principais competências e expectativas..."
                             rows={5}
                             className="border-0 bg-background/80 focus:bg-background resize-none"
+                            value={f.descricao_proposta}
+                            onChange={onChange}
+                            required
                           />
                         </div>
                       </Card>
 
                       <Card className="p-4 bg-muted/20 border-0">
                         <div className="space-y-2">
-                          <label className="text-sm font-semibold text-foreground">Experiência Relevante</label>
+                          <label className="text-sm font-semibold text-foreground" htmlFor="experiencia">Experiência Relevante</label>
                           <Textarea 
+                            id="experiencia"
                             placeholder="Conte sobre sua experiência em gestão de pessoas, consultoria ou áreas relacionadas..."
                             rows={3}
                             className="border-0 bg-background/80 focus:bg-background resize-none"
+                            value={f.experiencia}
+                            onChange={onChange}
                           />
                         </div>
                       </Card>
 
                       <div className="pt-4">
-                        <Button className="w-full" size="lg">
+                        <Button className="w-full" size="lg" type="submit" disabled={sending}>
                           <Mail className="w-5 h-5 mr-2" />
-                          Enviar Proposta de Parceria
+                          {sending ? "Enviando..." : "Enviar Proposta de Parceria"}
                         </Button>
 
                         <p className="text-sm text-muted-foreground text-center mt-4">
