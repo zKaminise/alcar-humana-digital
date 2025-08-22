@@ -78,7 +78,7 @@ const CasesSection = () => {
   };
 
   return (
-    <section id="cases" className="py-20 bg-background">
+    <section id="cases" className="py-20">
       <div className="container mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in">
