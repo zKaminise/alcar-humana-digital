@@ -17,10 +17,10 @@ const Cases = () => {
         }}
       />
       {/* Overlay */}
-      <div className="fixed inset-0 bg-background/80 backdrop-blur-sm pointer-events-none" style={{ zIndex: 10 }} />
+      <div className="fixed inset-0 bg-background/80 backdrop-blur-sm pointer-events-none" style={{ zIndex: 5 }} />
       
       {/* Content */}
-      <div className="relative z-20 pt-20">
+      <div className="relative z-10 pt-20">
         <CasesSection />
       </div>
     </div>
