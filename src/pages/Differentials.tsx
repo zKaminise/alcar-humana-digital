@@ -13,14 +13,14 @@ const Differentials = () => {
           backgroundAttachment: 'fixed',
           filter: 'blur(3px)',
           transform: 'scale(1.1)',
-          zIndex: -2
+          zIndex: 0
         }}
       />
       {/* Overlay */}
-      <div className="fixed inset-0 bg-background/80 backdrop-blur-sm" style={{ zIndex: -1 }} />
+      <div className="fixed inset-0 bg-background/80 backdrop-blur-sm pointer-events-none" style={{ zIndex: 10 }} />
       
       {/* Content */}
-      <div className="relative z-10 pt-20">
+      <div className="relative z-20 pt-20">
         <DifferentialsSection />
       </div>
     </div>
