@@ -16,6 +16,9 @@ import QuemSomos from "./pages/QuemSomos";
 import Parceiros from "./pages/Parceiros";
 import Artigos from "./pages/Artigos";
 import SejaParceiroForm from "./pages/SejaParceiroForm";
+import Solutions from "./pages/Solutions";
+import Cases from "./pages/Cases";
+import Differentials from "./pages/Differentials";
 
 // Services Pages
 import MapeamentoEstrategico from "./pages/services/MapeamentoEstrategico";
@@ -41,6 +44,9 @@ const App = () => (
             <Route path="/artigos" element={<Artigos />} />
             <Route path="/contato" element={<Contact />} />
             <Route path="/seja-parceiro" element={<SejaParceiroForm />} />
+            <Route path="/solucoes" element={<Solutions />} />
+            <Route path="/cases" element={<Cases />} />
+            <Route path="/diferenciais" element={<Differentials />} />
             
             {/* Services Routes */}
             <Route path="/servicos/mapeamento-estrategico" element={<MapeamentoEstrategico />} />
