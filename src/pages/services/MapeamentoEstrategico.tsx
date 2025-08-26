@@ -134,11 +134,11 @@ const MapeamentoEstrategico = () => {
               </div>
             </div>
             <div className="relative">
-              <div className="aspect-[4/3] bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl p-8 flex items-center justify-center">
+              <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-elegant">
                 <img 
-                  src="/lovable-uploads/4ed9b06a-4b64-4e1c-b495-4837d042d2a8.png" 
-                  alt="Dashboard estratégico em laptop"
-                  className="w-full h-full object-contain"
+                  src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                  alt="Planejamento estratégico e análise de negócios"
+                  className="w-full h-full object-cover"
                 />
               </div>
             </div>
