@@ -143,8 +143,12 @@ const QuemSomos = () => {
             <Card>
               <CardContent className="p-8">
                 <div className="grid md:grid-cols-2 gap-8 items-center">
-                  <div className="aspect-square bg-gradient-to-br from-primary/20 to-primary/5 rounded-xl flex items-center justify-center">
-                    <Users className="w-24 h-24 text-primary" />
+                  <div className="aspect-square rounded-xl overflow-hidden shadow-elegant">
+                    <img 
+                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                      alt="Profissional experiente em liderança e consultoria"
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold text-foreground mb-4">
