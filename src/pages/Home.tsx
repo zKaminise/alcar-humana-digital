@@ -112,21 +112,47 @@ const Home = () => {
 
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             {services.map((service, index) => (
-              <Card key={index} className="shadow-card border-border hover:shadow-elegant transition-all duration-300 group">
-                <CardContent className="p-8">
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:bg-primary group-hover:text-primary-foreground transition-all">
-                      <Target className="w-8 h-8 text-primary group-hover:text-primary-foreground" />
-                    </div>
-                    <h3 className="text-xl font-bold text-foreground mb-4">{service.title}</h3>
-                    <p className="text-muted-foreground mb-6">{service.description}</p>
-                    <div className="space-y-2">
-                      {service.features.map((feature, idx) => (
-                        <div key={idx} className="flex items-center justify-center">
-                          <CheckCircle className="w-4 h-4 text-primary mr-2" />
-                          <span className="text-sm text-foreground">{feature}</span>
+              <Card key={index} className="relative overflow-hidden shadow-card border-border hover:shadow-elegant transition-all duration-300 group">
+                <CardContent className="p-0">
+                  <div className="relative">
+                    {/* Service Image */}
+                    <div className="aspect-[4/3] bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center relative overflow-hidden">
+                      <img
+                        src={`https://images.unsplash.com/photo-${index === 0 ? '1553877522-43269d4ea984' : index === 1 ? '1600880292089-90a7e086ee0c' : '1600880292203-757bb62b4baf'}?w=400&h=300&fit=crop`}
+                        alt={service.title}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                      
+                      {/* Service Title Overlay */}
+                      <div className="absolute bottom-6 left-6 right-6 text-center">
+                        <h3 className="text-2xl font-bold text-white mb-2">{service.title}</h3>
+                        <div className="bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2">
+                          <p className="text-lg font-semibold text-white">
+                            {index === 0 ? '100+' : index === 1 ? '200+' : '150+'}
+                          </p>
+                          <p className="text-sm text-white/90">
+                            {index === 0 ? 'Empresas Transformadas' : index === 1 ? 'Projetos Culturais' : 'Talentos Desenvolvidos'}
+                          </p>
                         </div>
-                      ))}
+                      </div>
+                    </div>
+
+                    {/* Floating Buttons */}
+                    <div className="absolute -top-4 -left-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium flex items-center">
+                      <div className="w-2 h-2 bg-white rounded-full mr-2"></div>
+                      Consultoria Ativa
+                    </div>
+                    
+                    <div className="absolute -top-4 -right-4 bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                      ROI+
+                    </div>
+                    
+                    <div className="absolute -bottom-4 -right-4 bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center">
+                      <CheckCircle className="w-4 h-4 mr-1" />
+                      Excelência
+                      <br />
+                      Comprovada
                     </div>
                   </div>
                 </CardContent>
