@@ -268,14 +268,12 @@ const Home = () => {
             </div>
 
             <div className="relative">
-              <div className="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl p-8 aspect-square flex items-center justify-center">
-                <div className="text-center">
-                  <div className="w-32 h-32 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <Award className="w-16 h-16 text-primary" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-foreground mb-2">Excelência Comprovada</h3>
-                  <p className="text-muted-foreground">15+ anos transformando organizações</p>
-                </div>
+              <div className="rounded-2xl overflow-hidden shadow-elegant">
+                <img 
+                  src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  alt="Excelência em consultoria empresarial"
+                  className="w-full aspect-square object-cover"
+                />
               </div>
             </div>
           </div>
