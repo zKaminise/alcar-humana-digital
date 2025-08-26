@@ -65,10 +65,26 @@ const Home = () => {
   ];
 
   const stats = [
-    { number: '15+', label: 'Anos de Experiência', icon: Award },
-    { number: '100+', label: 'Empresas Atendidas', icon: Building2 },
-    { number: '1000+', label: 'Profissionais Capacitados', icon: Users },
-    { number: '95%', label: 'Taxa de Sucesso', icon: TrendingUp }
+    { 
+      image: 'https://images.unsplash.com/photo-1560472355-536de3962603?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', 
+      label: 'Anos de Experiência',
+      alt: 'Experiência profissional'
+    },
+    { 
+      image: 'https://images.unsplash.com/photo-1553484771-047a44eee27b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', 
+      label: 'Empresas Atendidas',
+      alt: 'Empresas parceiras'
+    },
+    { 
+      image: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', 
+      label: 'Profissionais Capacitados',
+      alt: 'Capacitação profissional'
+    },
+    { 
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', 
+      label: 'Taxa de Sucesso',
+      alt: 'Sucesso empresarial'
+    }
   ];
 
   const differentials = [
@@ -155,20 +171,23 @@ const Home = () => {
           </div>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {stats.map((stat, index) => {
-              const IconComponent = stat.icon;
-              return (
-                <Card key={index} className="text-center shadow-card border-border">
-                  <CardContent className="p-8">
-                    <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <IconComponent className="w-8 h-8 text-primary" />
+            {stats.map((stat, index) => (
+              <Card key={index} className="overflow-hidden shadow-card border-border hover:shadow-elegant transition-all duration-300">
+                <CardContent className="p-0">
+                  <div className="relative aspect-square">
+                    <img 
+                      src={stat.image} 
+                      alt={stat.alt}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    <div className="absolute bottom-4 left-4 right-4 text-center">
+                      <div className="text-white font-medium text-sm">{stat.label}</div>
                     </div>
-                    <div className="text-4xl font-bold text-primary mb-2">{stat.number}</div>
-                    <div className="text-muted-foreground font-medium">{stat.label}</div>
-                  </CardContent>
-                </Card>
-              );
-            })}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
