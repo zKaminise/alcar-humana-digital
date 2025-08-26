@@ -2,11 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight, ArrowRight, CheckCircle, Users, Target, TrendingUp, Building2, Lightbulb, Award } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import hero1 from '@/assets/consultoria-estrategica-hero.jpg';
-import hero2 from '@/assets/desenvolvimento-cultura-hero.jpg';
-import hero3 from '@/assets/quem-somos-hero.jpg';
-import hero4 from '@/assets/parceiros-hero.jpg';
-import hero5 from '@/assets/treinamentos-capacitacao-hero.jpg';
 
 const Carousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -23,7 +18,7 @@ const Carousel = () => {
       overlayColor: "bg-primary/20",
       icon: Target,
       stats: { number: "15+", label: "Anos de Experiência" },
-      image: hero1
+      image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
     },
     {
       id: 2,
@@ -36,7 +31,7 @@ const Carousel = () => {
       overlayColor: "bg-secondary/20",
       icon: Users,
       stats: { number: "100+", label: "Empresas Transformadas" },
-      image: hero2
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
     },
     {
       id: 3,
@@ -49,7 +44,7 @@ const Carousel = () => {
       overlayColor: "bg-primary-dark/20",
       icon: TrendingUp,
       stats: { number: "95%", label: "Taxa de Sucesso" },
-      image: hero3
+      image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
     },
     {
       id: 4,
@@ -62,7 +57,7 @@ const Carousel = () => {
       overlayColor: "bg-neutral-dark/20",
       icon: Building2,
       stats: { number: "1000+", label: "Profissionais Capacitados" },
-      image: hero4
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
     },
     {
       id: 5,
@@ -75,7 +70,7 @@ const Carousel = () => {
       overlayColor: "bg-accent/20",
       icon: Lightbulb,
       stats: { number: "98%", label: "Satisfação dos Clientes" },
-      image: hero5
+      image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
     }
   ];
 
@@ -103,7 +98,7 @@ const Carousel = () => {
           loading="eager" decoding="async" fetchPriority="high"
         />
         {/* Gradient Overlay */}
-        <div className={`absolute inset-0 bg-gradient-to-br ${slides[currentSlide].background} opacity-80 transition-all duration-1000`} />
+        <div className={`absolute inset-0 bg-gradient-to-br ${slides[currentSlide].background} opacity-70 transition-all duration-1000`} />
         {/* Additional Color Overlay */}
         <div className={`absolute inset-0 ${slides[currentSlide].overlayColor} transition-all duration-1000`} />
       </div>
