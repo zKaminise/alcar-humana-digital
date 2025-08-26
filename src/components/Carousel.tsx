@@ -2,6 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight, ArrowRight, CheckCircle, Users, Target, TrendingUp, Building2, Lightbulb, Award } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import hero1 from '@/assets/consultoria-estrategica-hero.jpg';
+import hero2 from '@/assets/desenvolvimento-cultura-hero.jpg';
+import hero3 from '@/assets/quem-somos-hero.jpg';
+import hero4 from '@/assets/parceiros-hero.jpg';
+import hero5 from '@/assets/treinamentos-capacitacao-hero.jpg';
 
 const Carousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -18,7 +23,7 @@ const Carousel = () => {
       overlayColor: "bg-primary/20",
       icon: Target,
       stats: { number: "15+", label: "Anos de Experiência" },
-      image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070"
+      image: hero1
     },
     {
       id: 2,
@@ -31,7 +36,7 @@ const Carousel = () => {
       overlayColor: "bg-secondary/20",
       icon: Users,
       stats: { number: "100+", label: "Empresas Transformadas" },
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2069"
+      image: hero2
     },
     {
       id: 3,
@@ -44,7 +49,7 @@ const Carousel = () => {
       overlayColor: "bg-primary-dark/20",
       icon: TrendingUp,
       stats: { number: "95%", label: "Taxa de Sucesso" },
-      image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?q=80&w=1926"
+      image: hero3
     },
     {
       id: 4,
@@ -57,7 +62,7 @@ const Carousel = () => {
       overlayColor: "bg-neutral-dark/20",
       icon: Building2,
       stats: { number: "1000+", label: "Profissionais Capacitados" },
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2070"
+      image: hero4
     },
     {
       id: 5,
@@ -70,7 +75,7 @@ const Carousel = () => {
       overlayColor: "bg-accent/20",
       icon: Lightbulb,
       stats: { number: "98%", label: "Satisfação dos Clientes" },
-      image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070"
+      image: hero5
     }
   ];
 
@@ -95,9 +100,10 @@ const Carousel = () => {
           src={slides[currentSlide].image}
           alt={slides[currentSlide].subtitle}
           className="w-full h-full object-cover transition-all duration-1000 transform scale-105"
+          loading="eager" decoding="async" fetchPriority="high"
         />
         {/* Gradient Overlay */}
-        <div className={`absolute inset-0 bg-gradient-to-br ${slides[currentSlide].background} opacity-90 transition-all duration-1000`} />
+        <div className={`absolute inset-0 bg-gradient-to-br ${slides[currentSlide].background} opacity-80 transition-all duration-1000`} />
         {/* Additional Color Overlay */}
         <div className={`absolute inset-0 ${slides[currentSlide].overlayColor} transition-all duration-1000`} />
       </div>
