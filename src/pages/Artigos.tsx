@@ -59,6 +59,7 @@ const Artigos = () => {
   };
 
   const handleArticleClick = (articleId: number) => {
+    console.log('Clicking article with ID:', articleId); // Debug log
     navigate(`/artigos/${articleId}`);
   };
 
