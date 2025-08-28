@@ -28,7 +28,8 @@ const SolutionsSection = () => {
         'Implementação de mudanças estruturais',
         'Acompanhamento de resultados'
       ],
-      color: 'primary'
+      color: 'primary',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
     },
     {
       icon: Building,
@@ -41,7 +42,8 @@ const SolutionsSection = () => {
         'Programas de engajamento',
         'Rituais e práticas organizacionais'
       ],
-      color: 'secondary'
+      color: 'secondary',
+      image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
     },
     {
       icon: GraduationCap,
@@ -54,7 +56,8 @@ const SolutionsSection = () => {
         'Acompanhamento pós-treinamento',
         'Certificações e avaliações'
       ],
-      color: 'accent'
+      color: 'accent',
+      image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
     },
     {
       icon: Users,
@@ -67,7 +70,8 @@ const SolutionsSection = () => {
         'Planos de carreira estruturados',
         'Programas de retenção de talentos'
       ],
-      color: 'primary'
+      color: 'primary',
+      image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
     }
   ];
 
@@ -164,23 +168,13 @@ const SolutionsSection = () => {
 
             {/* Visual Element */}
             <div className="relative">
-              <div className="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl p-8 aspect-square flex items-center justify-center">
-                {React.createElement(solutions[activeSolution].icon, {
-                  className: "w-32 h-32 text-primary/20"
-                })}
-                
-                {/* Floating Elements */}
-                <div className="absolute top-4 right-4 bg-card rounded-lg shadow-card p-3 border border-border animate-bounce">
-                  <Target className="w-6 h-6 text-primary" />
-                </div>
-                
-                <div className="absolute bottom-4 left-4 bg-card rounded-lg shadow-card p-3 border border-border animate-pulse">
-                  <Award className="w-6 h-6 text-secondary" />
-                </div>
-                
-                <div className="absolute top-1/2 left-4 bg-card rounded-lg shadow-card p-3 border border-border animate-bounce" style={{animationDelay: '1s'}}>
-                  <TrendingUp className="w-6 h-6 text-accent" />
-                </div>
+              <div className="rounded-2xl overflow-hidden shadow-elegant aspect-[4/3]">
+                <img 
+                  src={solutions[activeSolution].image} 
+                  alt={solutions[activeSolution].title}
+                  className="w-full h-full object-cover transition-all duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
               </div>
             </div>
           </div>
