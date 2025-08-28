@@ -1,80 +1,22 @@
 import React, { useState, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Calendar, User, Search, BookOpen, TrendingUp } from 'lucide-react';
+import { getAllArticles, getAllCategories } from '@/data/articlesData';
 
 const Artigos = () => {
+  const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState("Todos");
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const articlesPerPage = 3;
 
-  const articles = [
-    {
-      id: 1,
-      title: "O Futuro da Gestão de Pessoas: Tendências para 2024",
-      excerpt: "Explore as principais tendências que estão moldando o futuro da gestão de pessoas e como se preparar para elas.",
-      author: "Mariana Silva",
-      date: "15 de Janeiro, 2024",
-      category: "Gestão de Pessoas",
-      readTime: "8 min",
-      image: "/api/placeholder/400/250"
-    },
-    {
-      id: 2,
-      title: "Desenvolvimento de Liderança: Estratégias Práticas",
-      excerpt: "Descubra metodologias comprovadas para desenvolver líderes eficazes em sua organização.",
-      author: "João Santos",
-      date: "10 de Janeiro, 2024",
-      category: "Liderança",
-      readTime: "6 min",
-      image: "/api/placeholder/400/250"
-    },
-    {
-      id: 3,
-      title: "Cultura Organizacional: Como Transformar Sua Empresa",
-      excerpt: "Um guia completo para entender e transformar a cultura da sua organização.",
-      author: "Ana Costa",
-      date: "5 de Janeiro, 2024",
-      category: "Cultura",
-      readTime: "10 min",
-      image: "/api/placeholder/400/250"
-    },
-    {
-      id: 4,
-      title: "Mapeamento Estratégico: Ferramenta de Transformação",
-      excerpt: "Como utilizar o mapeamento estratégico para impulsionar resultados organizacionais.",
-      author: "Carlos Oliveira",
-      date: "28 de Dezembro, 2023",
-      category: "Estratégia",
-      readTime: "7 min",
-      image: "/api/placeholder/400/250"
-    },
-    {
-      id: 5,
-      title: "Mentoria Corporativa: Maximizando o Potencial Humano",
-      excerpt: "Os benefícios da mentoria corporativa e como implementar um programa eficaz.",
-      author: "Mariana Silva",
-      date: "22 de Dezembro, 2023",
-      category: "Desenvolvimento",
-      readTime: "5 min",
-      image: "/api/placeholder/400/250"
-    },
-    {
-      id: 6,
-      title: "Palestras Motivacionais: Impacto nos Resultados",
-      excerpt: "Como palestras e workshops podem transformar a motivação e produtividade das equipes.",
-      author: "Roberto Lima",
-      date: "18 de Dezembro, 2023",
-      category: "Motivação",
-      readTime: "9 min",
-      image: "/api/placeholder/400/250"
-    }
-  ];
+  const articles = getAllArticles();
 
-  const categories = ["Todos", "Gestão de Pessoas", "Liderança", "Cultura", "Estratégia", "Desenvolvimento", "Motivação"];
+  const categories = getAllCategories();
 
   // Filter articles based on category and search term
   const filteredArticles = useMemo(() => {
@@ -114,6 +56,10 @@ const Artigos = () => {
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
+  };
+
+  const handleArticleClick = (articleId: number) => {
+    navigate(`/artigos/${articleId}`);
   };
 
   return (
@@ -173,7 +119,7 @@ const Artigos = () => {
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-3 gap-8">
             {paginatedArticles.map((article) => (
-              <Card key={article.id} className="hover:shadow-lg transition-shadow cursor-pointer">
+              <Card key={article.id} className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => handleArticleClick(article.id)}>
                 <CardHeader className="p-0">
                   <div className="aspect-video bg-gradient-to-br from-primary/20 to-primary/5 rounded-t-lg flex items-center justify-center">
                     <BookOpen className="w-16 h-16 text-primary" />
@@ -185,7 +131,7 @@ const Artigos = () => {
                     <span className="text-sm text-muted-foreground">{article.readTime} de leitura</span>
                   </div>
                   
-                  <h3 className="text-xl font-bold text-foreground mb-3 hover:text-primary transition-colors">
+                  <h3 className="text-xl font-bold text-foreground mb-3 hover:text-primary transition-colors cursor-pointer">
                     {article.title}
                   </h3>
                   
@@ -204,7 +150,15 @@ const Artigos = () => {
                         <span>{article.date}</span>
                       </div>
                     </div>
-                    <Button variant="ghost" size="sm" className="text-primary hover:text-primary-dark">
+                    <Button 
+                      variant="ghost" 
+                      size="sm" 
+                      className="text-primary hover:text-primary-dark"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleArticleClick(article.id);
+                      }}
+                    >
                       Ler mais →
                     </Button>
                   </div>

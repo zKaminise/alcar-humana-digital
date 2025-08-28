@@ -15,6 +15,7 @@ import NotFound from "./pages/NotFound";
 import QuemSomos from "./pages/QuemSomos";
 import Parceiros from "./pages/Parceiros";
 import Artigos from "./pages/Artigos";
+import ArticleView from "./pages/ArticleView";
 import SejaParceiroForm from "./pages/SejaParceiroForm";
 import Solutions from "./pages/Solutions";
 import Cases from "./pages/Cases";
@@ -42,6 +43,7 @@ const App = () => (
             <Route path="/quem-somos" element={<QuemSomos />} />
             <Route path="/parceiros" element={<Parceiros />} />
             <Route path="/artigos" element={<Artigos />} />
+            <Route path="/artigos/:id" element={<ArticleView />} />
             <Route path="/contato" element={<Contact />} />
             <Route path="/seja-parceiro" element={<SejaParceiroForm />} />
             <Route path="/solucoes" element={<Solutions />} />
